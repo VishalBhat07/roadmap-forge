@@ -1,0 +1,26 @@
+ul{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+    padding: 1.2rem;
+    background-color: var(--primary);
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    padding: 4px 10px;
+    cursor: pointer;
+    transition: 0.1s linear;
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+a:hover{
+    color: var(--primary);
+    background-color: var(--secondary);
+    padding: 6px 12px;
+    font-weight: 800;
+}
