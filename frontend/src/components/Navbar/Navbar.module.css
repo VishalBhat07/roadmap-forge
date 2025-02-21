@@ -24,3 +24,18 @@ a:hover{
     padding: 6px 12px;
     font-weight: 800;
 }
+
+
+  .hrStyle {
+    border: none;
+    height: 3px;
+    background: linear-gradient(90deg, #000, #fff);
+    animation: moveGradient 3s infinite alternate;
+  }
+  
+  @keyframes moveGradient {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+  }
+  
+  
