@@ -1,0 +1,124 @@
+.container,
+.containerReverse {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4rem 8%;
+  min-height: 70vh;
+  color: white;
+  background-color: black;
+}
+
+.containerReverse {
+  flex-direction: row-reverse;
+}
+
+.left img {
+  flex: 1;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 10px;
+}
+
+.right {
+  flex: 1;
+  max-width: 60%;
+  padding-left: 40px;
+}
+
+.right h2 {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.right p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.box ul {
+  list-style: none;
+  padding: 0;
+}
+
+.box ul li {
+  margin: 1.5% 0;
+  font-size: 1.1rem;
+}
+
+.ctaButton {
+  padding: 12px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: transparent;
+  color: white;
+  border: 2px solid blueviolet;
+}
+
+.ctaButton:hover {
+  background-color: blueviolet;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .container,
+  .containerReverse {
+    flex-direction: column;
+    text-align: center;
+    padding: 3rem 5%;
+  }
+
+  .right {
+    max-width: 100%;
+    padding-left: 0;
+  }
+
+  .right h2 {
+    font-size: 2rem;
+  }
+
+  .right p {
+    font-size: 1.1rem;
+  }
+
+  .left img {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container,
+  .containerReverse {
+    padding: 2rem 5%;
+  }
+
+  .right h2 {
+    font-size: 1.8rem;
+  }
+
+  .right p {
+    font-size: 1rem;
+  }
+
+  .box ul li {
+    font-size: 1rem;
+  }
+
+  .ctaButton {
+    font-size: 0.9rem;
+    padding: 10px 16px;
+  }
+}

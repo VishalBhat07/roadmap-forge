@@ -1,102 +1,103 @@
 .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 4rem 8%;
-    background-color: var(--secondary);
-    min-height: 80vh;
-    color: white;
-    background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4rem 8%;
+  background-color: var(--secondary);
+  min-height: 70vh;
+  color: white;
+  background-color: black;
 }
 
 .left {
-    flex: 1;
-    max-width: 50%;
+  flex: 1;
+  max-width: 50%;
 }
 
 .left h2 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
 }
 
 .left p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
 }
 
 .btns {
-    display: flex;
-    gap: 1rem;
+  display: flex;
+  gap: 1rem;
 }
 
 .btns button {
-    padding: 12px 20px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .btns button:first-child {
-    background-color: blueviolet;
-    color: white;
+  background-color: blueviolet;
+  color: white;
 }
 
 .btns button:first-child:hover {
-    background-color: indigo;
-    transform: scale(1.05);
+  background-color: indigo;
+  transform: scale(1.05);
 }
 
 .btns button:last-child {
-    background-color: transparent;
-    color: white;
-    border: 2px solid blueviolet;
+  background-color: transparent;
+  color: white;
+  border: 2px solid blueviolet;
 }
 
 .btns button:last-child:hover {
-    background-color: blueviolet;
-    color: white;
-    transform: scale(1.05);
+  background-color: blueviolet;
+  color: white;
+  transform: scale(1.05);
 }
 
 .right {
-    flex: 1;
-    display: flex;
-    justify-content: center;
+  flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
 .right img {
-    width: 100%;
-    max-width: 550px;
-    animation: fadeIn 1s ease-in-out;
+  width: 100%;
+  max-width: 550px;
+  animation: fadeIn 1s ease-in-out;
 }
 
 /* Responsive Design */
 @media (max-width: 1024px) {
-    .container {
-        flex-direction: column;
-        text-align: center;
-    }
+  .container {
+    flex-direction: column;
+    text-align: center;
+  }
 
-    .left, .right {
-        max-width: 100%;
-    }
+  .left,
+  .right {
+    max-width: 100%;
+  }
 
-    .btns {
-        justify-content: center;
-    }
+  .btns {
+    justify-content: center;
+  }
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
