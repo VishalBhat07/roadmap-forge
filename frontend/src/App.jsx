@@ -9,15 +9,15 @@ import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 function App() {
   return (
     <>
-      <Navbar />
       <BrowserRouter>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Hero />} />
           <Route path="/about" element={<About />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
-      <Footer />
     </>
   );
 }

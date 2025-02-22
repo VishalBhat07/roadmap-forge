@@ -86,7 +86,7 @@ const Footer = () => {
         </div>
         <div className={styles.bottom}>
           <div className={styles.copyrights}>
-            &copy; 2024. All rights reserved.
+            &copy; 2025. All rights reserved.
           </div>
           <div className={styles.designed}>Designed by Vishal Bhat</div>
         </div>

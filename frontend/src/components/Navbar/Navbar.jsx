@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Navbar.module.css";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -7,19 +8,34 @@ const Navbar = () => {
       <nav className={styles.nav}>
         <ul className={styles.ul}>
           <li className={styles.li}>
-            <a className={styles.a}>Home</a>
+            <Link className={styles.a} to={"/"}>
+              Home
+            </Link>
           </li>
           <li className={styles.li}>
-            <a className={styles.a}>About</a>
+            <Link className={styles.a} to={"/about"}>
+              About
+            </Link>
           </li>
           <li className={styles.li}>
-            <a className={styles.a}>Contact</a>
+            <Link className={styles.a} to={"/contact"}>
+              Contact
+            </Link>
           </li>
           <li className={styles.li}>
-            <a className={styles.a}>Github</a>
+            <Link
+              className={styles.a}
+              to={"https://github.com/VishalBhat07"}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Github
+            </Link>
           </li>
           <li className={styles.li}>
-            <a className={styles.a}>Sign in</a>
+            <Link className={styles.a} to={"/signin"}>
+              Sign in
+            </Link>
           </li>
         </ul>
       </nav>
