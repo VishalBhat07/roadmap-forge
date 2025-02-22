@@ -1,0 +1,158 @@
+.wrapper {
+  background-color: black;
+}
+
+.container {
+  padding: 1% 12%;
+  color: white;
+  background-color: #212121;
+  position: relative;
+  clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 100%);
+  padding-top: 8%;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2% 2%;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  color: #fff;
+  animation: pulse 1.5s infinite alternate;
+}
+
+
+
+.logo > i {
+  font-size: 25px;
+}
+
+.social > ul {
+  list-style: none;
+  display: flex;
+  gap: 16px;
+}
+
+.social > ul > li {
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.social > ul > li:hover {
+  color: blueviolet;
+  transform: scale(1.2);
+}
+
+.middle {
+  display: flex;
+  justify-content: space-between;
+  padding: 2%;
+  flex-wrap: wrap;
+}
+
+.middle > div {
+  flex: 1;
+  min-width: 200px;
+}
+
+.quickLinks > div > ul {
+  list-style: none;
+}
+
+.contactUs > div > ul {
+  list-style: none;
+}
+
+.emailInput > form {
+  display: flex;
+  flex-direction: column;
+}
+
+.emailInput input {
+  width: 80%;
+  padding: 6px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  outline: none;
+  background-color: black;
+  color: white;
+  font-size: 14px;
+}
+
+.emailInput input:focus {
+  border-color: blueviolet;
+  box-shadow: 0 0 5px rgba(138, 43, 226, 0.5);
+}
+
+.signUp {
+  width: 30%;
+  padding: 6px;
+  background-color: orange;
+  border: none;
+  border-radius: 4px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.signUp:hover {
+  background-color: darkorange;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2%;
+  border-top: 1px solid #444;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.columnheaders {
+  max-width: 200px;
+  margin-bottom: 7%;
+  border-bottom: 2px solid blueviolet;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.contactUs > div > ul > li {
+  display: flex;
+  gap: 4%;
+  align-items: center;
+  margin: 2%;
+  cursor: pointer;
+}
+
+.contactUs > div > ul > li > a {
+  text-decoration: none;
+  color: white;
+}
+
+.quickLinks > div > ul > li {
+  margin: 2%;
+}
+
+.quickLinks > div > ul > li > a {
+  cursor: pointer;
+}
+
+@keyframes pulse {
+  0% {
+    text-shadow: 0 0 10px #8a2be2, 0 0 20px #9400d3;
+  }
+  50% {
+    text-shadow: 0 0 20px #8a2be2, 0 0 40px #9400d3;
+  }
+  100% {
+    text-shadow: 0 0 10px #8a2be2, 0 0 20px #9400d3;
+  }
+}

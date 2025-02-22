@@ -4,22 +4,22 @@ import styles from "./Navbar.module.css";
 const Navbar = () => {
   return (
     <>
-      <nav>
-        <ul>
-          <li>
-            <a>Home</a>
+      <nav className={styles.nav}>
+        <ul className={styles.ul}>
+          <li className={styles.li}>
+            <a className={styles.a}>Home</a>
           </li>
-          <li>
-            <a>About</a>
+          <li className={styles.li}>
+            <a className={styles.a}>About</a>
           </li>
-          <li>
-            <a>Contact</a>
+          <li className={styles.li}>
+            <a className={styles.a}>Contact</a>
           </li>
-          <li>
-            <a>Github</a>
+          <li className={styles.li}>
+            <a className={styles.a}>Github</a>
           </li>
-          <li>
-            <a>Sign in</a>
+          <li className={styles.li}>
+            <a className={styles.a}>Sign in</a>
           </li>
         </ul>
       </nav>
