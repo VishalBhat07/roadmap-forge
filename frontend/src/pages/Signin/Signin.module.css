@@ -1,0 +1,98 @@
+.container {
+  height: 80vh;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid blueviolet;
+  border-radius: 12px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.6);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+/* Header */
+.header p {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: blueviolet;
+}
+
+/* Sign-in Form */
+.signin form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 15px;
+}
+
+.signin form input {
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: 1px solid #666;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.signin form input:focus {
+  border-color: blueviolet;
+  box-shadow: 0 0 8px rgba(138, 43, 226, 0.7);
+}
+
+/* CTA Button */
+.ctaButton {
+  width: 80%;
+  padding: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+  background-color: blueviolet;
+  color: white;
+  margin-top: 10px;
+}
+
+.ctaButton:hover {
+  background-color: rgb(116, 28, 206);
+  transform: scale(1.05);
+}
+
+.switch p {
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+.switch a {
+  color: blueviolet;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.switch a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .modal {
+    width: 90%;
+  }
+}
