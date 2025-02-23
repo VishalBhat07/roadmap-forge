@@ -1,7 +1,9 @@
 import React from "react";
 import "./NotFoundPage.css";
+import { useNavigate } from "react-router-dom";
 
 const NotFoundPage = () => {
+  const navigate = useNavigate();
   return (
     <div className="container">
       <div className="number">404</div>
@@ -10,7 +12,7 @@ const NotFoundPage = () => {
         ...maybe the page you're looking for is not found or never existed
       </div>
       <div className="redirect">
-        <button>Go To Home</button>
+        <button onClick={() => navigate("/")}>Go To Home</button>
       </div>
     </div>
   );

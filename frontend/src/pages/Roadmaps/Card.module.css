@@ -1,0 +1,54 @@
+.container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 20px;
+  width: 300px;
+  min-height: 160px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.container:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: 14px;
+  color: #f1f1f1;
+  margin-bottom: 10px;
+}
+
+.difficulty {
+  font-size: 14px;
+  font-weight: bold;
+  padding: 5px 10px;
+  display: inline-block;
+  border-radius: 6px;
+  margin-top: 8px;
+}
+
+.duration {
+  font-size: 13px;
+  font-weight: 600;
+  color: #d1d1d1;
+  margin-top: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+  }
+}
