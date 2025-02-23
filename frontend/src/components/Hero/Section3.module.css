@@ -1,38 +1,28 @@
-.container,
-.containerReverse {
+.container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 4rem 8%;
+  background-color: var(--secondary);
   min-height: 60vh;
   color: white;
   background-color: black;
+  gap: 20px;
 }
 
-.containerReverse {
-  flex-direction: row-reverse;
-}
-
-.left img {
+.left {
   flex: 1;
-  width: 100%;
-  max-width: 400px;
-  border-radius: 10px;
-}
-
-.right {
-  flex: 1;
-  max-width: 60%;
+  max-width: 50%;
   padding-left: 40px;
 }
 
-.right h2 {
+.left h2 {
   font-size: 2.2rem;
   font-weight: bold;
   margin-bottom: 1rem;
 }
 
-.right p {
+.left p {
   font-size: 1.2rem;
   line-height: 1.6;
   margin-bottom: 1.5rem;
@@ -72,6 +62,13 @@
   transform: scale(1.05);
 }
 
+.right img {
+  flex: 1;
+  width: 100%;
+  max-width: 550px;
+  border-radius: 10px;
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
   .container,
@@ -81,20 +78,20 @@
     padding: 3rem 5%;
   }
 
-  .right {
+  .left {
     max-width: 100%;
     padding-left: 0;
   }
 
-  .right h2 {
+  .left h2 {
     font-size: 2rem;
   }
 
-  .right p {
+  .left p {
     font-size: 1.1rem;
   }
 
-  .left img {
+  .right img {
     max-width: 300px;
   }
 }
@@ -105,11 +102,11 @@
     padding: 2rem 5%;
   }
 
-  .right h2 {
+  .left h2 {
     font-size: 1.8rem;
   }
 
-  .right p {
+  .left p {
     font-size: 1rem;
   }
 
