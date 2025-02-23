@@ -58,10 +58,7 @@ const Footer = () => {
               <ul>
                 <li>
                   <i className="fa-solid fa-location-dot"></i>
-                  <a>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Dicta, mollitia.
-                  </a>
+                  <a>Bengaluru, Karnataka, India</a>
                 </li>
                 <li>
                   <i className="fa-brands fa-whatsapp"></i>
