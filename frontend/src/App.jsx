@@ -3,7 +3,6 @@ import Footer from "./components/Footer/Footer";
 import Hero from "./components/Hero/hero";
 import Navbar from "./components/Navbar/Navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import About from "./pages/About/About";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import Signin from "./pages/Signin/Signin";
 import Roadmaps from "./pages/Roadmaps/Roadmaps.jsx";
@@ -15,9 +14,9 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Hero />} />
-          <Route path="/about" element={<About />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/roadmaps" element={<Roadmaps />} />
+          <Route path="/community" element={<Community />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Footer />

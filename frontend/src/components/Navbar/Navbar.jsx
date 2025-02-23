@@ -29,7 +29,7 @@ const Navbar = () => {
               rel="noopener noreferrer"
               target="_blank"
             >
-              Github
+              GitHub
             </Link>
           </li>
           <li className={styles.li}>
