@@ -4,7 +4,7 @@ import "./Accordion.css";
 const Accordion = ({ id, title, content }) => {
   const [show, setShow] = useState(false);
 
-  console.log(title);
+  // console.log(title);
 
   function handleToggle() {
     setShow(!show);

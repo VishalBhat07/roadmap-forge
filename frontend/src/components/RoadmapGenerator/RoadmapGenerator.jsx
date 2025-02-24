@@ -2,10 +2,11 @@ import React from "react";
 import Accordion from "../Accordion/Accordion.jsx";
 import backendRoadmap from "../../assets/Roadmaps/backendRoadmap.js";
 
-const RoadmapGenerator = () => {
+const RoadmapGenerator = ({ roadmap }) => {
+  // console.log(roadmap);
   return (
     <>
-      {backendRoadmap.map((section) => (
+      {roadmap.map((section) => (
         <Accordion
           key={section.id}
           id={section.id}

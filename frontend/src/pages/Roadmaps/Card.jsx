@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./Card.module.css";
+import { useNavigate } from "react-router-dom";
 
 const Card = ({ id, title, description, difficulty, duration }) => {
   function getDifficultyColor(difficulty) {
@@ -14,9 +15,22 @@ const Card = ({ id, title, description, difficulty, duration }) => {
         return "purple";
     }
   }
+  const navigate = useNavigate();
 
   return (
-    <div id={id} key={id} className={styles.container}>
+    <div
+      id={id}
+      key={id}
+      className={styles.container}
+      onClick={() =>
+        navigate(
+          `/roadmaps/${title
+            .toLowerCase()
+            .replace(/[^a-zA-Z ]/g, "")
+            .replace(/ /g, "")}`
+        )
+      }
+    >
       <div className={styles.title}>{title}</div>
       <div className={styles.description}>{description}</div>
       <div
