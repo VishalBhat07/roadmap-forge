@@ -19,7 +19,16 @@
 }
 
 .ul li:last-child {
-  border-bottom: 2px solid blueviolet;
+  /* border-bottom: 2px solid blueviolet; */
+  background-color: blueviolet;
+  border-radius: 2px;
+}
+
+.signin {
+  background-color: blueviolet;
+}
+.signin :hover {
+  background-color: rgb(130, 19, 234);
 }
 
 .a:hover {

@@ -1,14 +1,26 @@
 .searchbar {
   background-color: black;
-  border: 2px solid green;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.text{
+.text {
+  margin-top: 3%;
   background-color: black;
-  border: 2px solid green;
+  color: white;
+  border-radius: 15px;
+  overflow: hidden;
+  padding: 8px 15px;
+  width: 300px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 14px;
+}
+
+.text:focus {
+  border-color: blueviolet;
+  box-shadow: 0 0 5px rgba(138, 43, 226, 0.5);
 }
 
 .container {
@@ -17,7 +29,7 @@
   min-height: 70vh;
   padding: 3% 10%;
   display: flex;
-  justify-content: space-between;
   gap: 40px;
   flex-wrap: wrap;
+  justify-content: center;
 }
