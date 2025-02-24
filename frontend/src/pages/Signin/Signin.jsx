@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Signin.module.css";
+import Axios from "axios";
 
 const Signin = () => {
+  const port = 8080;
+  const backendUrl = `http://localhost:${port}/userData`;
   const [userData, setUserData] = useState({
     username: "",
     email: "",
@@ -16,9 +19,17 @@ const Signin = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Form submitted successfully");
+    Axios.post(backendUrl, userData)
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+
     setUserData({
       username: "",
       email: "",
