@@ -1,0 +1,29 @@
+.accordion {
+  border: 2px solid green;
+  margin: 10px;
+  max-width: 600px;
+  padding: 10px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header {
+  cursor: pointer;
+}
+
+.button {
+  background-color: black;
+}
+
+.button i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: white;
+  width: 20px;
+}
