@@ -85,7 +85,16 @@ const Footer = () => {
           <div className={styles.copyrights}>
             &copy; 2025. All rights reserved.
           </div>
-          <div className={styles.designed}>Designed by Vishal Bhat</div>
+          <div className={styles.designed}>
+            Designed by{" "}
+            <a
+              href={"https://github.com/VishalBhat07"}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Vishal Bhat
+            </a>
+          </div>
         </div>
       </div>
     </div>

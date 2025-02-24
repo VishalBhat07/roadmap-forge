@@ -139,3 +139,13 @@
 .quickLinks > div > ul > li > a {
   cursor: pointer;
 }
+
+.designed a {
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+}
+
+.designed a:hover {
+  color: blueviolet;
+}
