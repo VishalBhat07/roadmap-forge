@@ -9,6 +9,7 @@ import Community from "./pages/Community/Community.jsx";
 import Roadmaps from "./pages/Roadmaps/Roadmaps.jsx";
 import Roadmap from "./pages/Roadmap/Roadmap.jsx";
 // import RoadmapGenerator from "./components/RoadmapGenerator/RoadmapGenerator.jsx";
+import WorkInProgressPage from "./pages/WorkInProgressPage/WorkInProgressPage/WorkInProgressPage.jsx";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
           <Route path="/signin" element={<Signin />} />
           <Route path="/roadmaps" element={<Roadmaps />} />
           <Route path="/roadmaps/:id" element={<Roadmap />} />
-          <Route path="/community" element={<Community />} />
+          <Route path="/community" element={<WorkInProgressPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Footer />

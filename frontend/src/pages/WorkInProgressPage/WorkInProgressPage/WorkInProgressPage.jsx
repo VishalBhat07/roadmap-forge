@@ -1,16 +1,16 @@
 import React from "react";
-import "./NotFoundPage.css";
+import styles from "./WorkInProgressPage.module.css";
 import { useNavigate } from "react-router-dom";
-import FuzzyText from "../../blocks/FuzzyText/FuzzyText";
+import FuzzyText from "../../../blocks/FuzzyText/FuzzyText";
 
-const NotFoundPage = () => {
+const WorkInProgressPage = () => {
   const navigate = useNavigate();
   return (
-    <div className="container">
-      <div className="number">
+    <div className={styles.container}>
+      <div className={styles.number}>
         <FuzzyText
           children
-          fontSize={"220px"}
+          fontSize={"120px"}
           fontWeight={900}
           fontFamily={"inherit"}
           color={"blueviolet"}
@@ -18,10 +18,10 @@ const NotFoundPage = () => {
           baseIntensity={0.35}
           hoverIntensity={0.5}
         >
-          404
+          Work In Progress
         </FuzzyText>
       </div>
-      <div className="text1">
+      <div className={styles.text1}>
         <FuzzyText
           children
           fontSize={"40px"}
@@ -35,14 +35,14 @@ const NotFoundPage = () => {
           There's NOTHING here...
         </FuzzyText>
       </div>
-      <div className="text2">
+      <div className={styles.text2}>
         ...maybe the page you're looking for is not found or never existed
       </div>
-      <div className="redirect">
+      <div className={styles.redirect}>
         <button onClick={() => navigate("/")}>Go To Home</button>
       </div>
     </div>
   );
 };
 
-export default NotFoundPage;
+export default WorkInProgressPage;
