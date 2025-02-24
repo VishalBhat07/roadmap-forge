@@ -18,8 +18,8 @@ const Navbar = () => {
             </Link>
           </li>
           <li className={styles.li}>
-            <Link className={styles.a} to={"/about"}>
-              About
+            <Link className={styles.a} to={"/community"}>
+              Community
             </Link>
           </li>
           <li className={styles.li}>

@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import styles from "./Roadmap.module.css";
 import RoadmapGenerator from "../../components/RoadmapGenerator/RoadmapGenerator";
 import allRoadmaps from "./allRoadmaps.js";
-import frontendRoadmap from "../../assets/Roadmaps/frontendRoadmap.js";
 
 const Roadmap = () => {
   const params = useParams();

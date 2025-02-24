@@ -5,18 +5,26 @@ import Card from "./Card.jsx";
 
 const Roadmaps = () => {
   return (
-    <div className={styles.container}>
-      {roadmaps.map((roadmap) => (
-        <Card
-          id={roadmap.id}
-          key={roadmap.id}
-          title={roadmap.title}
-          description={roadmap.description}
-          difficulty={roadmap.difficulty}
-          duration={roadmap.duration}
-        />
-      ))}
-    </div>
+    <>
+      <div className={styles.searchbar}>
+        <div>
+          <input type="text" name="search" className={styles.text} />
+          <i class="fa-brands fa-searchengin"></i>
+        </div>
+      </div>
+      <div className={styles.container}>
+        {roadmaps.map((roadmap) => (
+          <Card
+            id={roadmap.id}
+            key={roadmap.id}
+            title={roadmap.title}
+            description={roadmap.description}
+            difficulty={roadmap.difficulty}
+            duration={roadmap.duration}
+          />
+        ))}
+      </div>
+    </>
   );
 };
 

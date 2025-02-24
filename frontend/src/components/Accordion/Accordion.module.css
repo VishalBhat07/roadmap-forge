@@ -1,0 +1,46 @@
+.accordion {
+  border: 1px solid white;
+  color: white;
+  margin: 10px;
+  min-width: 600px;
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header {
+  cursor: pointer;
+}
+
+.button {
+  background-color: black;
+}
+
+.button i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: white;
+  width: 20px;
+}
+
+.content {
+  max-height: 0;
+  width: 95%;
+  opacity: 0;
+  transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.visible {
+  max-height: 500px;
+  opacity: 1;
+}

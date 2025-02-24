@@ -1,8 +1,21 @@
+.searchbar {
+  background-color: black;
+  border: 2px solid green;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text{
+  background-color: black;
+  border: 2px solid green;
+}
+
 .container {
   background-color: black;
   color: white;
   min-height: 70vh;
-  padding: 5% 10%;
+  padding: 3% 10%;
   display: flex;
   justify-content: space-between;
   gap: 40px;

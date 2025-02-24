@@ -1,6 +1,6 @@
 import React from "react";
 import Accordion from "../Accordion/Accordion.jsx";
-import backendRoadmap from "../../assets/Roadmaps/backendRoadmap.js";
+// import backendRoadmap from "../../assets/Roadmaps/backendRoadmap.js";
 
 const RoadmapGenerator = ({ roadmap }) => {
   // console.log(roadmap);
