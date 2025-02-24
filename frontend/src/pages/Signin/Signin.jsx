@@ -5,7 +5,7 @@ import Axios from "axios";
 
 const Signin = () => {
   const port = 8080;
-  const backendUrl = `http://localhost:${port}/userData`;
+  const backendUrl = `http://localhost:${port}/signin`;
   const [userData, setUserData] = useState({
     username: "",
     email: "",
@@ -35,7 +35,6 @@ const Signin = () => {
       email: "",
       password: "",
     });
-    console.log(userData);
   };
 
   return (
