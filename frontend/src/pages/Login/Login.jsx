@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
 import login from "../../auth/login";
 import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const timeout = 5000;
   const [userData, setUserData] = useState({
     username: "",
     password: "",
@@ -23,7 +25,11 @@ const Login = () => {
 
     const res = await login(userData.username, userData.password);
 
-    !res.user ? toast.error(res.error) : toast.success(res.message);
+    if (!res.user) toast.error(res.error);
+    else {
+      toast.success(res.message);
+      setTimeout(() => navigate("/"), timeout);
+    }
 
     setUserData({
       username: "",
@@ -61,7 +67,7 @@ const Login = () => {
               <button type="submit" className={styles.ctaButton}>
                 Sign In
               </button>
-              <ToastContainer />
+              <ToastContainer autoClose={timeout} />
             </form>
           </div>
           <div className={styles.switch}>

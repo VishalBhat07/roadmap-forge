@@ -28,20 +28,29 @@ app.listen(port, () => {
 });
 
 // Creating a new user & adding it ot MongoDB
-app.post("/signin", async (req, res) => {
+app.post("/register", async (req, res) => {
   try {
     const { username, email, password } = req.body;
     const hashpassword = await bcrypt.hash(password, 10);
 
     const newUser = new userModel({ username, email, password: hashpassword });
     const savedUser = await newUser.save();
-    res.json({
+
+    if (!savedUser) {
+      return res.json({
+        message: "User registration failed",
+        user: null,
+      });
+    }
+    return res.json({
       message: "User registered successfully",
-      success: true,
       user: savedUser,
     });
   } catch (error) {
     console.log(error.message);
+    return res.json({
+      error: "Internal server error",
+    });
   }
 });
 
