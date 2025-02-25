@@ -12,23 +12,40 @@ import Roadmap from "./pages/Roadmap/Roadmap.jsx";
 import WorkInProgressPage from "./pages/WorkInProgressPage/WorkInProgressPage/WorkInProgressPage.jsx";
 import fetchUser from "./auth/login.js";
 import Login from "./pages/Login/Login.jsx";
+import AuthContext from "./context/authContext.js";
+import { useEffect, useState } from "react";
 
 function App() {
+  
+  const [loginState, setLoginState] = useState({
+    user: null,
+    isLoggedIn: false,
+  });
+
   return (
     <>
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Hero />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/roadmaps" element={<Roadmaps />} />
-          <Route path="/roadmaps/:id" element={<Roadmap />} />
-          <Route path="/community" element={<WorkInProgressPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-        <Footer />
-      </BrowserRouter>
+      <AuthContext.Provider value={{ loginState, setLoginState }}>
+        <BrowserRouter>
+          <Navbar />
+          <button
+            onClick={() => {
+              console.log(loginState);
+            }}
+          >
+            click me
+          </button>
+          <Routes>
+            <Route path="/" element={<Hero />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/roadmaps" element={<Roadmaps />} />
+            <Route path="/roadmaps/:id" element={<Roadmap />} />
+            <Route path="/community" element={<WorkInProgressPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+          <Footer />
+        </BrowserRouter>
+      </AuthContext.Provider>
     </>
   );
 }

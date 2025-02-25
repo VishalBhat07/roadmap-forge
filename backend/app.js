@@ -31,7 +31,8 @@ app.listen(port, () => {
 app.post("/register", async (req, res) => {
   try {
     const { username, email, password } = req.body;
-    const hashpassword = await bcrypt.hash(password, 10);
+    const salt = await bcrypt.genSalt(10);
+    const hashpassword = await bcrypt.hash(password, salt);
 
     const newUser = new userModel({ username, email, password: hashpassword });
     const savedUser = await newUser.save();

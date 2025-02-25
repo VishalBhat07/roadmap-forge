@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
 import login from "../../auth/login";
 import { ToastContainer, toast } from "react-toastify";
+import AuthContext from "../../context/authContext";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ const Login = () => {
     username: "",
     password: "",
   });
+  const { loginState, setLoginState } = useContext(AuthContext);
 
   const handleChange = (e) => {
     setUserData({
@@ -29,6 +31,12 @@ const Login = () => {
     else {
       toast.success(res.message);
       setTimeout(() => navigate("/"), timeout);
+      const newLoginState = {
+        user: res.user,
+        isLoggedIn: true,
+      };
+      setLoginState(newLoginState);
+      localStorage.setItem("loginState", JSON.stringify(newLoginState));
     }
 
     setUserData({
