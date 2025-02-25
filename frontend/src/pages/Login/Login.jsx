@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Login.module.css";
 import login from "../../auth/login";
+import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
-  const port = 8080;
-  const backendUrl = `http://localhost:${port}/login`;
   const [userData, setUserData] = useState({
     username: "",
     password: "",
@@ -22,7 +21,9 @@ const Login = () => {
     e.preventDefault();
     console.log("Form submitted successfully");
 
-    login(userData.username, userData.password);
+    const res = await login(userData.username, userData.password);
+
+    !res.user ? toast.error(res.error) : toast.success(res.message);
 
     setUserData({
       username: "",
@@ -46,6 +47,7 @@ const Login = () => {
                 placeholder="username"
                 value={userData.username}
                 onChange={handleChange}
+                required
               />
               <input
                 name="password"
@@ -54,10 +56,12 @@ const Login = () => {
                 placeholder="password"
                 value={userData.password}
                 onChange={handleChange}
+                required
               />
               <button type="submit" className={styles.ctaButton}>
                 Sign In
               </button>
+              <ToastContainer />
             </form>
           </div>
           <div className={styles.switch}>

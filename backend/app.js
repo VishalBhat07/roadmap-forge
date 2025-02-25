@@ -54,6 +54,7 @@ app.post("/login", async (req, res) => {
     if (!user)
       return res.json({
         error: "User not found in DB",
+        user: null,
       });
 
     const isMatch = await bcrypt.compare(password, user.password);
@@ -61,6 +62,7 @@ app.post("/login", async (req, res) => {
     if (!isMatch)
       return res.json({
         error: "Invalid credentials",
+        user: null,
       });
 
     res.json({
