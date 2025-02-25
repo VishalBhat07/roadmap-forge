@@ -2,12 +2,11 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
 import login from "../../auth/login";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import AuthContext from "../../context/authContext";
 
 const Login = () => {
   const navigate = useNavigate();
-  const timeout = 5000;
   const [userData, setUserData] = useState({
     username: "",
     password: "",
@@ -30,7 +29,7 @@ const Login = () => {
     if (!res.user) toast.error(res.error);
     else {
       toast.success(res.message);
-      setTimeout(() => navigate("/"), timeout);
+      setTimeout(() => navigate("/"), 4000);
       const newLoginState = {
         user: res.user,
         isLoggedIn: true,
@@ -75,7 +74,6 @@ const Login = () => {
               <button type="submit" className={styles.ctaButton}>
                 Sign In
               </button>
-              <ToastContainer autoClose={timeout} />
             </form>
           </div>
           <div className={styles.switch}>

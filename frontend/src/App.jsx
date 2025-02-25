@@ -13,10 +13,10 @@ import WorkInProgressPage from "./pages/WorkInProgressPage/WorkInProgressPage/Wo
 import fetchUser from "./auth/login.js";
 import Login from "./pages/Login/Login.jsx";
 import AuthContext from "./context/authContext.js";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { ToastContainer } from "react-toastify";
 
 function App() {
-  
   const [loginState, setLoginState] = useState({
     user: null,
     isLoggedIn: false,
@@ -27,13 +27,6 @@ function App() {
       <AuthContext.Provider value={{ loginState, setLoginState }}>
         <BrowserRouter>
           <Navbar />
-          <button
-            onClick={() => {
-              console.log(loginState);
-            }}
-          >
-            click me
-          </button>
           <Routes>
             <Route path="/" element={<Hero />} />
             <Route path="/signup" element={<Signup />} />
@@ -44,6 +37,7 @@ function App() {
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
           <Footer />
+          <ToastContainer autoClose={3000} />
         </BrowserRouter>
       </AuthContext.Provider>
     </>

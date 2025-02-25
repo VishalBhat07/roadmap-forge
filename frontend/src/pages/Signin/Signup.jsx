@@ -1,15 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Signup.module.css";
-import Axios from "axios";
 import createUser from "../../auth/signup";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
+import AuthContext from "../../context/authContext";
 
 const Signup = () => {
-  const port = 8080;
-  const timeout = 5000;
   const navigate = useNavigate();
-  const backendUrl = `http://localhost:${port}/signin`;
+  const { loginState, setLoginState } = useContext(AuthContext);
   const [userData, setUserData] = useState({
     username: "",
     email: "",
@@ -33,7 +31,13 @@ const Signup = () => {
         toast.error(res.error);
       } else {
         toast.success(res.message);
-        setTimeout(() => navigate("/"), timeout);
+        setTimeout(() => navigate("/"), 4000);
+        const newLoginState = {
+          user: res.user,
+          isLoggedIn: true,
+        };
+        setLoginState(newLoginState);
+        localStorage.setItem("loginState", JSON.stringify(newLoginState));
       }
     } catch (error) {
       console.log(error);
@@ -82,7 +86,6 @@ const Signup = () => {
               <button type="submit" className={styles.ctaButton}>
                 Sign Up
               </button>
-              <ToastContainer autoClose={timeout} />
             </form>
           </div>
           <div className={styles.switch}>
