@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import styles from "./Signin.module.css";
-import Axios from "axios";
+import styles from "./Login.module.css";
+import login from "../../auth/login";
 
-const Signin = () => {
+const Login = () => {
   const port = 8080;
-  const backendUrl = `http://localhost:${port}/signin`;
+  const backendUrl = `http://localhost:${port}/login`;
   const [userData, setUserData] = useState({
     username: "",
-    email: "",
     password: "",
   });
 
@@ -22,17 +21,11 @@ const Signin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Form submitted successfully");
-    Axios.post(backendUrl, userData)
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+
+    login(userData.username, userData.password);
 
     setUserData({
       username: "",
-      email: "",
       password: "",
     });
   };
@@ -55,14 +48,6 @@ const Signin = () => {
                 onChange={handleChange}
               />
               <input
-                name="email"
-                className={styles.email}
-                type="text"
-                placeholder="email"
-                value={userData.email}
-                onChange={handleChange}
-              />
-              <input
                 name="password"
                 className={styles.password}
                 type="password"
@@ -77,7 +62,7 @@ const Signin = () => {
           </div>
           <div className={styles.switch}>
             <p>
-              Don't have an account? <Link to={"/register"}>click here</Link>
+              Don't have an account? <Link to={"/signup"}>click here</Link>
             </p>
           </div>
         </div>
@@ -86,4 +71,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default Login;

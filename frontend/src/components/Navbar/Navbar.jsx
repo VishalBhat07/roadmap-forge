@@ -33,7 +33,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li className={styles.li}>
-            <Link className={`${styles.a} ${styles.signin}`} to={"/signin"}>
+            <Link className={`${styles.a} ${styles.signin}`} to={"/login"}>
               Sign in
             </Link>
           </li>

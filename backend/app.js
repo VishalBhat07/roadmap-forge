@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const userModel = require("./Models/userModel");
+const bcrypt = require("bcrypt");
 
 const port = process.env.PORT || 8080;
 const mongodbURL = process.env.MONGODBURL;
@@ -29,11 +30,13 @@ app.listen(port, () => {
 // Creating a new user & adding it ot MongoDB
 app.post("/signin", async (req, res) => {
   try {
-    const data = req.body;
-    const newUser = new userModel(data);
+    const { username, email, password } = req.body;
+    const hashpassword = await bcrypt.hash(password, 10);
+
+    const newUser = new userModel({ username, email, password: hashpassword });
     const savedUser = await newUser.save();
     res.json({
-      message: "Recieved data",
+      message: "User registered successfully",
       success: true,
       user: savedUser,
     });
@@ -42,17 +45,29 @@ app.post("/signin", async (req, res) => {
   }
 });
 
-// app.post("/userData", (req, res) => {
-//   res.send({
-//     message: "Data recieved on backend",
-//     success: true,
-//   });
-//   const data = req.body;
-//   console.log(data);
-// });
+// Login route
+app.post("/login", async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    const user = await userModel.findOne({ username });
 
-// app.get("/users", async (req, res) => {
-//   const userData = await userModel.find();
-//   console.log(userData);
-//   res.json(userData);
-// });
+    if (!user)
+      return res.json({
+        error: "User not found in DB",
+      });
+
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    if (!isMatch)
+      return res.json({
+        error: "Invalid credentials",
+      });
+
+    res.json({
+      message: "Login successfull",
+      user: user,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
