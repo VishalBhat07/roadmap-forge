@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import styles from "./Navbar.module.css";
 import { Link } from "react-router-dom";
 import AuthContext from "../../context/authContext";
@@ -6,12 +6,12 @@ import { toast } from "react-toastify";
 
 const Navbar = () => {
   const { loginState, setLoginState } = useContext(AuthContext);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const handleSignOut = () => {
     setLoginState({ user: null, isLoggedIn: false });
     localStorage.removeItem("loginState");
-    console.log("Signed out succesfully");
-    toast("Signed out sucessfully");
+    toast.success("Signed out successfully");
   };
 
   return (
@@ -44,14 +44,39 @@ const Navbar = () => {
             </Link>
           </li>
           {localStorage.getItem("loginState") !== null ? (
-            <li className={styles.li}>
-              <Link
-                className={`${styles.a} ${styles.signin}`}
-                to={"/"}
-                onClick={handleSignOut}
-              >
-                Sign out
-              </Link>
+            <li
+              className={styles.dropdown}
+              onClick={() => setDropdownOpen((prev) => !prev)}
+            >
+              <div className={styles.dropdownHeader}>
+                <button className={styles.profileButton}>
+                  <p>{loginState.user.username}</p>{" "}
+                  <i className="fa-solid fa-user"></i>
+                </button>
+              </div>
+              {dropdownOpen && (
+                <div className={styles.dropdownContent}>
+                  <div>
+                    <Link className={styles.dropdownLinks} to={"/profile"}>
+                      My Profile
+                    </Link>
+                  </div>
+                  <div>
+                    <Link
+                      className={styles.dropdownLinks}
+                      to={"/"}
+                      onClick={handleSignOut}
+                    >
+                      Sign out
+                    </Link>
+                  </div>
+                  <div>
+                    <Link className={styles.dropdownLinks} to={"/settings"}>
+                      Settings
+                    </Link>
+                  </div>
+                </div>
+              )}
             </li>
           ) : (
             <li className={styles.li}>

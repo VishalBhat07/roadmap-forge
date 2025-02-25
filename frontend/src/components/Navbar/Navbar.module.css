@@ -18,16 +18,11 @@
   font-weight: 500;
 }
 
-.ul li:last-child {
-  /* border-bottom: 2px solid blueviolet; */
-  background-color: blueviolet;
-  border-radius: 2px;
-}
-
 .signin {
   background-color: blueviolet;
 }
-.signin :hover {
+
+.signin:hover {
   background-color: rgb(130, 19, 234);
 }
 
@@ -52,4 +47,49 @@
   100% {
     background-position: 100% 50%;
   }
+}
+
+.dropdown {
+  position: relative;
+  cursor: pointer;
+  margin: -1px 0;
+}
+
+.profileButton {
+  background-color: #000;
+  color: white;
+  border: none;
+  font-size: 18px;
+  font-weight: 400;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dropdownContent {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: black;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+  /* z-index: 1000; */
+}
+
+.dropdownLinks {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  border: 1px solid grey;
+}
+
+.dropdownLinks:hover {
+  background-color: #414141;
 }
