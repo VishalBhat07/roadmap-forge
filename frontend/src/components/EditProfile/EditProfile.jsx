@@ -5,8 +5,7 @@ import { useState } from "react";
 import { toast } from "react-toastify";
 
 const EditProfile = ({ setEditProfile }) => {
-  const port = 8080;
-  const backendUrl = `http://localhost:${port}`;
+  const backendUrl = import.meta.env.VITE_BACKENDURL;
   const currentUser = JSON.parse(localStorage.getItem("loginState"));
   const [image, setImage] = useState();
   const [preview, setPreview] = useState(null);

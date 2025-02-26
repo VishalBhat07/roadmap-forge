@@ -14,8 +14,7 @@ const Profile = () => {
   const [image, setImage] = useState(placeholder);
   const currentUser = JSON.parse(localStorage.getItem("loginState"));
   const navigate = useNavigate();
-  const port = 8080;
-  const backendUrl = `http://localhost:${port}`;
+  const backendUrl = import.meta.env.VITE_BACKENDURL;
   const date = new Date();
 
   const courses = [

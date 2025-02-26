@@ -1,10 +1,10 @@
 import Axios from "axios";
 
-const backendURL = "http://localhost:8080";
+const backendUrl = import.meta.env.VITE_BACKENDURL;
 
 export default async function createUser(userData) {
   try {
-    const res = await Axios.post(backendURL + "/register", userData);
+    const res = await Axios.post(backendUrl + "/register", userData);
     console.log("Response received:", res.data);
     return res.data;
   } catch (err) {

@@ -1,7 +1,6 @@
 import Axios from "axios";
 
-const port = 8080;
-const backendUrl = `http://localhost:${port}`;
+const backendUrl = import.meta.env.VITE_BACKENDURL;
 
 async function login(username, password) {
   try {
