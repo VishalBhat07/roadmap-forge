@@ -50,7 +50,12 @@ const Navbar = () => {
             >
               <div className={styles.dropdownHeader}>
                 <button className={styles.profileButton}>
-                  <p>{loginState.user.username}</p>{" "}
+                  <p>
+                    {
+                      JSON.parse(localStorage.getItem("loginState")).user
+                        .username
+                    }
+                  </p>{" "}
                   <i className="fa-solid fa-user"></i>
                 </button>
               </div>

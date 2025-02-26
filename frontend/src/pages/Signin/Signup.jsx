@@ -4,10 +4,12 @@ import styles from "./Signup.module.css";
 import createUser from "../../auth/signup";
 import { toast } from "react-toastify";
 import AuthContext from "../../context/authContext";
+import NotFoundPage from "../NotFoundPage/NotFoundPage";
 
 const Signup = () => {
   const navigate = useNavigate();
   const { loginState, setLoginState } = useContext(AuthContext);
+  const currentUser = JSON.parse(localStorage.getItem("loginState"));
   const [userData, setUserData] = useState({
     username: "",
     email: "",
@@ -50,7 +52,7 @@ const Signup = () => {
     });
   };
 
-  return (
+  return !currentUser ? (
     <>
       <div className={styles.container}>
         <div className={styles.modal}>
@@ -96,6 +98,8 @@ const Signup = () => {
         </div>
       </div>
     </>
+  ) : (
+    <NotFoundPage />
   );
 };
 

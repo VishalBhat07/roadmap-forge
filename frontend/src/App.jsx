@@ -8,10 +8,9 @@ import Signup from "./pages/Signin/Signup.jsx";
 import Community from "./pages/Community/Community.jsx";
 import Roadmaps from "./pages/Roadmaps/Roadmaps.jsx";
 import Roadmap from "./pages/Roadmap/Roadmap.jsx";
-// import RoadmapGenerator from "./components/RoadmapGenerator/RoadmapGenerator.jsx";
 import WorkInProgressPage from "./pages/WorkInProgressPage/WorkInProgressPage/WorkInProgressPage.jsx";
-import fetchUser from "./auth/login.js";
 import Login from "./pages/Login/Login.jsx";
+import Profile from "./pages/Profile/Profile.jsx";
 import AuthContext from "./context/authContext.js";
 import { useState } from "react";
 import { ToastContainer } from "react-toastify";
@@ -34,6 +33,7 @@ function App() {
             <Route path="/roadmaps" element={<Roadmaps />} />
             <Route path="/roadmaps/:id" element={<Roadmap />} />
             <Route path="/community" element={<WorkInProgressPage />} />
+            <Route path="/profile" element={<Profile />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
           <Footer />

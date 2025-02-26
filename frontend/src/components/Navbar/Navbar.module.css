@@ -78,7 +78,7 @@
   min-width: 160px;
   display: flex;
   flex-direction: column;
-  /* z-index: 1000; */
+  z-index: 1000;
 }
 
 .dropdownLinks {
