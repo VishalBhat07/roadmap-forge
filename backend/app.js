@@ -3,7 +3,9 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const userModel = require("./Models/userModel");
+const imageModel = require("./Models/imageModel");
 const bcrypt = require("bcrypt");
+const multer = require("multer");
 
 const port = process.env.PORT || 8080;
 const mongodbURL = process.env.MONGODBURL;
@@ -11,6 +13,8 @@ const mongodbURL = process.env.MONGODBURL;
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+const upload = multer({ storage: multer.memoryStorage() });
 
 mongoose
   .connect(mongodbURL, {
@@ -81,5 +85,73 @@ app.post("/login", async (req, res) => {
     });
   } catch (err) {
     console.log(err);
+  }
+});
+
+// Upload profile pic route
+app.post("/uploadpic", upload.single("image"), async (req, res) => {
+  try {
+    const user = JSON.parse(req.body.user);
+    const username = user.username;
+    const image = req.file;
+
+    const searchImage = await imageModel.findOne({ username });
+
+    if (!searchImage) {
+      const newImage = new imageModel({
+        username: user.username,
+        image: {
+          data: image.buffer,
+          contentType: image.mimetype,
+        },
+      });
+
+      const savedImage = await newImage.save();
+      // console.log("Images uploaded succesfully");
+      res.json({
+        message: "Profile photo added",
+        savedImage: savedImage,
+      });
+    } else {
+      const searchImage = await imageModel.findOneAndUpdate(
+        {
+          username: username,
+        },
+        {
+          $set: {
+            image: {
+              data: image.buffer,
+              contentType: image.mimetype,
+            },
+          },
+        },
+        { new: true }
+      );
+      res.json({
+        message: "Profile photo updated",
+        searchImage: searchImage,
+      });
+    }
+  } catch (err) {
+    console.log(err);
+    res.json({
+      error: "Internal server error",
+    });
+  }
+});
+
+// Get user pfp
+app.get("/images/:username", async (req, res) => {
+  try {
+    const user = await imageModel.findOne({ username: req.params.username });
+    console.log(user);
+    if (!user || !user.image) {
+      return res.status(404).send("Image not found");
+    }
+
+    res.set("Content-Type", "image/png"); // Set the correct content type
+    res.send(user.image.data); // Send binary image data
+  } catch (err) {
+    res.status(500).send("Error retrieving image");
   }
 });
