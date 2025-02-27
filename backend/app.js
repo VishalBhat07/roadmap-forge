@@ -31,7 +31,7 @@ app.listen(port, () => {
   console.log(`App is running on http://localhost:${port}`);
 });
 
-// Creating a new user & adding it ot MongoDB
+// Creating a new user & adding it to MongoDB
 app.post("/register", async (req, res) => {
   try {
     const { username, email, password } = req.body;
@@ -52,7 +52,6 @@ app.post("/register", async (req, res) => {
       user: savedUser,
     });
   } catch (error) {
-    console.log(error.message);
     return res.json({
       error: "Internal server error",
     });
@@ -84,7 +83,9 @@ app.post("/login", async (req, res) => {
       user: user,
     });
   } catch (err) {
-    console.log(err);
+    res.json({
+      message: "Internal server error",
+    });
   }
 });
 
@@ -107,7 +108,6 @@ app.post("/uploadpic", upload.single("image"), async (req, res) => {
       });
 
       const savedImage = await newImage.save();
-      // console.log("Images uploaded succesfully");
       res.json({
         message: "Profile photo added",
         savedImage: savedImage,
@@ -133,7 +133,6 @@ app.post("/uploadpic", upload.single("image"), async (req, res) => {
       });
     }
   } catch (err) {
-    console.log(err);
     res.json({
       error: "Internal server error",
     });
@@ -144,14 +143,47 @@ app.post("/uploadpic", upload.single("image"), async (req, res) => {
 app.get("/images/:username", async (req, res) => {
   try {
     const user = await imageModel.findOne({ username: req.params.username });
-    console.log(user);
     if (!user || !user.image) {
       return res.status(404).send("Image not found");
     }
-
     res.set("Content-Type", "image/png"); // Set the correct content type
     res.send(user.image.data); // Send binary image data
   } catch (err) {
     res.status(500).send("Error retrieving image");
+  }
+});
+
+// Adding enrolled courses to user in MongoDB
+app.post("/enroll", async (req, res) => {
+  const { roadmapTitle, username } = req.body;
+
+  try {
+    const findUser = await userModel.findOne({ username });
+
+    if (!findUser) {
+      return res.json({ message: "User not found in DB" });
+    }
+
+    const alreadyEnrolled = findUser.enrolledRoadmaps.some((roadmap) => {
+      return roadmap.title === roadmapTitle;
+    });
+
+    if (alreadyEnrolled) {
+      return res.json({
+        message: "You are already enrolled in the course",
+      });
+    }
+
+    findUser.enrolledRoadmaps.push({
+      title: roadmapTitle,
+    });
+
+    await findUser.save();
+
+    res.json({ message: "Enrollment successful", user: findUser });
+  } catch (err) {
+    res.json({
+      message: "Internal server error",
+    });
   }
 });

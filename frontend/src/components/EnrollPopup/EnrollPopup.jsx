@@ -2,9 +2,23 @@ import React, { useEffect } from "react";
 import styles from "./EnrollPopup.module.css";
 import { toast } from "react-toastify";
 import getRoadmapInfo from "../../util/getRoadmapInfo";
+import Axios from "axios";
 
 const EnrollPopup = ({ setEnrollPopup, roadmapTitle }) => {
   const roadmap = getRoadmapInfo(roadmapTitle);
+  const currentUser = JSON.parse(localStorage.getItem("loginState"));
+  const enrollUserCourse = async (roadmapTitle) => {
+    try {
+      const res = await Axios.post("http://localhost:8080/enroll", {
+        roadmapTitle: roadmapTitle,
+        username: currentUser.user.username,
+      });
+
+      toast(res.data.message);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div className={styles.editProfile}>
       <div className={styles.header}>
@@ -36,9 +50,8 @@ const EnrollPopup = ({ setEnrollPopup, roadmapTitle }) => {
           <button
             className={`${styles.submit} ${styles.submitYes}`}
             onClick={() => {
-              toast("User enrolled successfully");
-              console.log(roadmap);
               setEnrollPopup((enrollPopup) => !enrollPopup);
+              enrollUserCourse(roadmapTitle);
             }}
           >
             YES

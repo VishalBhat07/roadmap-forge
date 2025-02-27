@@ -49,13 +49,20 @@
 }
 
 .submit {
-  background: blueviolet;
   color: white;
   border: none;
   padding: 5px 20px;
   border-radius: 6px;
   cursor: pointer;
   font-size: 15px;
+}
+
+.submitYes {
+  background-color: green;
+  transition: all 0.3s ease;
+}
+.submitNo {
+  background-color: red;
   transition: all 0.3s ease;
 }
 

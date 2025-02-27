@@ -52,7 +52,6 @@ const Profile = () => {
   };
 
   useEffect(() => {
-    console.log("Fetch called");
     fetchUserPfp();
   }, [editProfile]);
 
