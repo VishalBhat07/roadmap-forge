@@ -10,10 +10,8 @@ const Accordion = ({ id, title, content }) => {
 
   return (
     <div className={styles.accordion} key={id}>
-      <div className={styles.top}>
-        <div className={styles.header} onClick={handleToggle}>
-          {title}
-        </div>
+      <div className={styles.top} onClick={handleToggle}>
+        <div className={styles.header}>{title}</div>
         <button onClick={handleToggle} className={styles.button}>
           {show ? (
             <i className="fa-solid fa-arrow-up"></i>

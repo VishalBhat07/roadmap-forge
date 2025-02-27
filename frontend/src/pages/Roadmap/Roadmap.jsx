@@ -12,10 +12,11 @@ const Roadmap = () => {
         <div className={styles.courseInfo}>{allRoadmaps[params.id].title}</div>
         <div className={styles.buttons}>
           <button>
-            <p> Start learning</p> <i class="fa-solid fa-graduation-cap"></i>
+            <p> Start learning</p>{" "}
+            <i className="fa-solid fa-graduation-cap"></i>
           </button>
           <button>
-            <p> Join Community</p> <i class="fa-brands fa-discord"></i>
+            <p> Join Community</p> <i className="fa-brands fa-discord"></i>
           </button>
         </div>
       </div>
