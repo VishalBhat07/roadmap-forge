@@ -7,21 +7,17 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import EditProfile from "../../components/EditProfile/EditProfile";
 import Axios from "axios";
+import fetchUserCourses from "../../util/fetchUserCourses";
 
 const Profile = () => {
   const { loginState, setLoginState } = useContext(AuthContext);
   const [editProfile, setEditProfile] = useState(false);
+  const [roadmaps, setRoadmaps] = useState([]);
   const [image, setImage] = useState(placeholder);
   const currentUser = JSON.parse(localStorage.getItem("loginState"));
   const navigate = useNavigate();
   const backendUrl = import.meta.env.VITE_BACKENDURL;
   const date = new Date();
-
-  const courses = [
-    "Frontend Development",
-    "Backend Development",
-    "Full Stack Web Development",
-  ];
 
   const handleSignOut = () => {
     setLoginState({ user: null, isLoggedIn: false });
@@ -53,6 +49,12 @@ const Profile = () => {
 
   useEffect(() => {
     fetchUserPfp();
+
+    fetchUserCourses("abc")
+      .then((res) => {
+        setRoadmaps(res.enrolledRoadmaps);
+      })
+      .catch((err) => console.log(err));
   }, [editProfile]);
 
   return currentUser !== null && currentUser.isLoggedIn ? (
@@ -76,9 +78,9 @@ const Profile = () => {
         <div className={styles.right}>
           <div className={styles.courses}>
             <div>Your roadmaps : </div>
-            {courses.map((course, index) => (
+            {roadmaps.map((roadmap, index) => (
               <div key={index} className={styles.course}>
-                {course}
+                {roadmap.title} enrolled on {roadmap.date.split("T")[0]}
               </div>
             ))}
           </div>

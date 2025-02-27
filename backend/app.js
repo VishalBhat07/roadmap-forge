@@ -187,3 +187,31 @@ app.post("/enroll", async (req, res) => {
     });
   }
 });
+
+// Fetch all the enrolled courses for a given user
+app.get("/roadmaps/:id", async (req, res) => {
+  const username = req.params.id;
+  try {
+    const findUser = await userModel.findOne({ username });
+    if (!findUser) {
+      return res.json({
+        message: "User not found in DB",
+      });
+    }
+
+    const enrolledRoadmaps = findUser.enrolledRoadmaps;
+    if (enrolledRoadmaps.length < 1)
+      return res.json({
+        message: "No roadmaps enrolled",
+      });
+
+    return res.json({
+      message: "Enrolled roadmaps found",
+      enrolledRoadmaps: enrolledRoadmaps,
+    });
+  } catch (err) {
+    res.json({
+      message: "Internal server error",
+    });
+  }
+});
