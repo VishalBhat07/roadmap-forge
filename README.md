@@ -32,10 +32,8 @@ RoadMapForge/
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React.js, TailwindCSS, React Flow/D3.js
-- **State Management**: Zustand/Redux
-- **Backend (Future Expansion)**: Node.js, Express, MongoDB/Firebase
-- **AI Integration (Future Expansion)**: OpenAI API for personalized learning paths
+- **Frontend**: React.js, TailwindCSS
+- **Backend** : Node.js, Express, MongoDB
 
 ## 🔧 Installation & Setup
 
@@ -44,16 +42,18 @@ RoadMapForge/
    git clone https://github.com/yourusername/RoadMapForge.git
    cd RoadMapForge/frontend
    ```
-2. Install dependencies:
+2. Setting up frontend:
    ```sh
+   cd frontend
    npm install
-   ```
-3. Start the development server:
-   ```sh
    npm run dev
    ```
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
+3. Start the backend server:
+   ```sh
+   cd backend
+   node app.js
+   ```
+4. Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ## 🚀 Future Enhancements
 
@@ -66,6 +66,6 @@ RoadMapForge/
 
 Contributions are welcome! Feel free to fork the repository and submit a pull request.
 
-## 
+##
 
 Happy coding! 🚀
