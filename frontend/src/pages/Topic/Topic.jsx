@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import styles from "./Topic.module.css";
 import { useNavigate, useParams } from "react-router-dom";
 import allRoadmaps from "../Roadmap/allRoadmaps";
-import { toast } from "react-toastify";
 import dummydata from "./dummydata.js";
+import handleTopicCompleted from "../../util/handleTopicCompleted.js";
 
 const Topic = () => {
   const { roadmap, topicid } = useParams();
@@ -43,18 +43,10 @@ const Topic = () => {
       : navigate(`/roadmaps/${roadmap}/${allTopics[prevIndex]}`);
   };
 
-  const handleTopicCompleted = () => {
-    setTimeout(() => {
-      setCompleted(true);
-    }, 200);
-    toast.success(`"${topicid}" completed`);
-  };
-
   return (
     <div className={styles.container}>
       <div className={styles.middle}>
         <div className={styles.topic}>{topicid}</div>
-        {/* <div>Index : {index}</div> */}
         <div className={styles.content}>{dummydata}</div>
       </div>
       <div className={styles.buttons}>
@@ -63,7 +55,7 @@ const Topic = () => {
         </button>
         <button
           onClick={() => {
-            handleTopicCompleted();
+            handleTopicCompleted(roadmap, topicid, setCompleted);
           }}
           className={`${styles.completeButton} ${
             completed ? styles.completed : styles.incomplete

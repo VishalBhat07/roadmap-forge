@@ -261,3 +261,36 @@ app.post("/userProgress", async (req, res) => {
     });
   }
 });
+
+// Update user progress
+app.post("/updateProgress", async (req, res) => {
+  try {
+    const { username, roadmap, topic } = req.body;
+    console.log(username);
+    console.log(roadmap);
+    console.log(topic);
+
+    const findUser = await courseProgressModel.findOne({ username, roadmap });
+    findUser.topicsCompleted;
+    const topicToBeUpdated = findUser.topicsCompleted.find(
+      (t) => t.topicName === topic
+    );
+    topicToBeUpdated.completed = true;
+
+    const savedUser = await findUser.save();
+    if (!savedUser) {
+      return res.json({
+        message: "User progress not updated",
+        user: null,
+      });
+    }
+    res.json({
+      message: "User progress updated",
+      user: savedUser,
+    });
+  } catch (error) {
+    res.json({
+      message: "Internal server error",
+    });
+  }
+});
