@@ -4,11 +4,20 @@ import { useNavigate, useParams } from "react-router-dom";
 import allRoadmaps from "../Roadmap/allRoadmaps";
 import dummydata from "./dummydata.js";
 import handleTopicCompleted from "../../util/handleTopicCompleted.js";
+import fetchTopicCompletionStatus from "../../util/fetchTopicCompletionStatus.js";
 
 const Topic = () => {
   const { roadmap, topicid } = useParams();
+  const currentUser = JSON.parse(localStorage.getItem("loginState"));
   const [completed, setCompleted] = useState(false);
   const navigate = useNavigate();
+
+  fetchTopicCompletionStatus(
+    currentUser.user.username,
+    allRoadmaps[roadmap].title,
+    topicid,
+    setCompleted
+  );
 
   const getRoadmap = (roadmap) => {
     const userRoadmap = allRoadmaps[roadmap].roadmap;

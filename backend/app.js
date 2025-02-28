@@ -271,7 +271,6 @@ app.post("/updateProgress", async (req, res) => {
     console.log(topic);
 
     const findUser = await courseProgressModel.findOne({ username, roadmap });
-    findUser.topicsCompleted;
     const topicToBeUpdated = findUser.topicsCompleted.find(
       (t) => t.topicName === topic
     );
@@ -291,6 +290,33 @@ app.post("/updateProgress", async (req, res) => {
   } catch (error) {
     res.json({
       message: "Internal server error",
+    });
+  }
+});
+
+// Update user progress
+app.get("/fetchProgress/:username/:roadmap/:topic", async (req, res) => {
+  try {
+    const { username, roadmap, topic } = req.params;
+    console.log(username);
+    console.log(roadmap);
+    console.log(topic);
+
+    const findUser = await courseProgressModel.findOne({ username, roadmap });
+    const topicToBeUpdated = findUser.topicsCompleted.find(
+      (t) => t.topicName === topic
+    );
+
+    const isCompleted = topicToBeUpdated.completed;
+
+    res.json({
+      message: "User progress updated",
+      isCompleted: isCompleted,
+    });
+  } catch (error) {
+    res.json({
+      message: "Internal server error",
+      isCompleted: null,
     });
   }
 });
