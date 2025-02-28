@@ -14,11 +14,9 @@ const Roadmap = () => {
   const roadmap = allRoadmaps[params.id].roadmap;
   const navigate = useNavigate();
   const currentUser = JSON.parse(localStorage.getItem("loginState"));
-  const username = currentUser.user.username;
-  const backendUrl = import.meta.env.VITE_BACKENDURL;
 
   const redirect = () => {
-    toast("Login to enroll in any course");
+    toast("Login to enroll in any roadmap");
     navigate("/login");
   };
 

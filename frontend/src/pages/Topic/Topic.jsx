@@ -5,6 +5,7 @@ import allRoadmaps from "../Roadmap/allRoadmaps";
 import dummydata from "./dummydata.js";
 import handleTopicCompleted from "../../util/handleTopicCompleted.js";
 import fetchTopicCompletionStatus from "../../util/fetchTopicCompletionStatus.js";
+import { toast } from "react-toastify";
 
 const Topic = () => {
   const { roadmap, topicid } = useParams();
@@ -13,7 +14,7 @@ const Topic = () => {
   const navigate = useNavigate();
 
   fetchTopicCompletionStatus(
-    currentUser.user.username,
+    currentUser?.user.username,
     allRoadmaps[roadmap].title,
     topicid,
     setCompleted
@@ -64,7 +65,8 @@ const Topic = () => {
         </button>
         <button
           onClick={() => {
-            handleTopicCompleted(roadmap, topicid, setCompleted);
+            if (currentUser === null) toast("You need to login first");
+            else handleTopicCompleted(roadmap, topicid, setCompleted);
           }}
           className={`${styles.completeButton} ${
             completed ? styles.completed : styles.incomplete
