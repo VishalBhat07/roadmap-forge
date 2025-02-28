@@ -5,14 +5,17 @@ import RoadmapGenerator from "../../components/RoadmapGenerator/RoadmapGenerator
 import allRoadmaps from "./allRoadmaps.js";
 import EnrollPopup from "../../components/EnrollPopup/EnrollPopup.jsx";
 import { toast } from "react-toastify";
+import Axios from "axios";
 
 const Roadmap = () => {
   const params = useParams();
   const [enrollPopup, setEnrollPopup] = useState(false);
   const roadmapTitle = allRoadmaps[params.id].title;
   const roadmap = allRoadmaps[params.id].roadmap;
-  const currentUser = JSON.parse(localStorage.getItem("loginState"));
   const navigate = useNavigate();
+  const currentUser = JSON.parse(localStorage.getItem("loginState"));
+  const username = currentUser.user.username;
+  const backendUrl = import.meta.env.VITE_BACKENDURL;
 
   const redirect = () => {
     toast("Login to enroll in any course");

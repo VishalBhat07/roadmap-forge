@@ -3,12 +3,11 @@ import styles from "./Topic.module.css";
 import { useNavigate, useParams } from "react-router-dom";
 import allRoadmaps from "../Roadmap/allRoadmaps";
 import { toast } from "react-toastify";
+import dummydata from "./dummydata.js";
 
 const Topic = () => {
   const { roadmap, topicid } = useParams();
   const [completed, setCompleted] = useState(false);
-  const [index, setIndex] = useState(null);
-  const [section, setSection] = useState(null);
   const navigate = useNavigate();
 
   const getRoadmap = (roadmap) => {
@@ -45,8 +44,10 @@ const Topic = () => {
   };
 
   const handleTopicCompleted = () => {
-    setCompleted(true);
-    toast("Well done !!");
+    setTimeout(() => {
+      setCompleted(true);
+    }, 200);
+    toast.success(`"${topicid}" completed`);
   };
 
   return (
@@ -54,54 +55,33 @@ const Topic = () => {
       <div className={styles.middle}>
         <div className={styles.topic}>{topicid}</div>
         {/* <div>Index : {index}</div> */}
-        <div className={styles.content}>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate
-          enim tempora error repellat optio quibusdam tenetur qui, soluta ex
-          itaque, dolore blanditiis cumque nostrum omnis vero libero laborum!
-          Quo consectetur tenetur debitis laborum ratione, est dolorem placeat
-          consequuntur culpa quaerat nemo eius dicta qui rem illum saepe
-          assumenda amet velit! Lorem ipsum dolor sit amet, consectetur
-          adipisicing elit. Voluptate enim tempora error repellat optio
-          quibusdam tenetur qui, soluta ex itaque, dolore blanditiis cumque
-          nostrum omnis vero libero laborum! Quo consectetur tenetur debitis
-          laborum ratione, est dolorem placeat consequuntur culpa quaerat nemo
-          eius dicta qui rem illum saepe assumenda amet velit! Lorem ipsum dolor
-          sit amet, consectetur adipisicing elit. Voluptate enim tempora error
-          repellat optio quibusdam tenetur qui, soluta ex itaque, dolore
-          blanditiis cumque nostrum omnis vero libero laborum! Quo consectetur
-          tenetur debitis laborum ratione, est dolorem placeat consequuntur
-          culpa quaerat nemo eius dicta qui rem illum saepe assumenda amet
-          velit! Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-          Voluptate enim tempora error repellat optio quibusdam tenetur qui,
-          soluta ex itaque, dolore blanditiis cumque nostrum omnis vero libero
-          laborum! Quo consectetur tenetur debitis laborum ratione, est dolorem
-          placeat consequuntur culpa quaerat nemo eius dicta qui rem illum saepe
-          assumenda amet velit!
-        </div>
+        <div className={styles.content}>{dummydata}</div>
       </div>
       <div className={styles.buttons}>
-        <button onClick={() => getPrevSection()}>
+        <button onClick={() => getPrevSection()} className={styles.navigate}>
           <i className="fa-solid fa-arrow-left-long"></i>
         </button>
         <button
           onClick={() => {
             handleTopicCompleted();
           }}
-          className={styles.completeButton}
+          className={`${styles.completeButton} ${
+            completed ? styles.completed : styles.incomplete
+          } `}
         >
           {completed ? (
             <>
-              <p>Completed</p>
+              <p>Completed !</p>
               <i className="fa-solid fa-circle-check"></i>
             </>
           ) : (
             <>
               <p>Mark as complete</p>
-              <i className="fa-solid fa-hourglass-half"></i>
+              <i className="fa-regular fa-square"></i>
             </>
           )}
         </button>
-        <button onClick={() => getNextSection()}>
+        <button onClick={() => getNextSection()} className={styles.navigate}>
           <i className="fa-solid fa-arrow-right-long"></i>
         </button>
       </div>
