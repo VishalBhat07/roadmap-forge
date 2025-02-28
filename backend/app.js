@@ -6,6 +6,7 @@ const userModel = require("./Models/userModel");
 const imageModel = require("./Models/imageModel");
 const bcrypt = require("bcrypt");
 const multer = require("multer");
+const courseProgressModel = require("./Models/courseProgressModel");
 
 const port = process.env.PORT || 8080;
 const mongodbURL = process.env.MONGODBURL;
@@ -212,6 +213,51 @@ app.get("/roadmaps/:id", async (req, res) => {
   } catch (err) {
     res.json({
       message: "Internal server error",
+    });
+  }
+});
+
+// Add user progress for each roadmap
+app.post("/userProgress", async (req, res) => {
+  try {
+    const { username, roadmap, topicsCompleted } = req.body;
+
+    const findUser = await courseProgressModel.findOne({ username });
+
+    if (findUser !== null) {
+      const alreadyEnrolled =
+        findUser.username === username && findUser.roadmap === roadmap;
+
+      if (alreadyEnrolled) {
+        return res.json({
+          message: "Course progress is already saved",
+        });
+      }
+    }
+
+    const courseProgress = new courseProgressModel({
+      username,
+      roadmap,
+      topicsCompleted,
+    });
+
+    const savedProgress = await courseProgress.save();
+
+    console.log("saved progress :", savedProgress);
+    if (!savedProgress) {
+      return res.json({
+        message: "User progress not saved",
+        user: null,
+      });
+    }
+    res.json({
+      message: "User progress saved",
+      user: savedProgress,
+    });
+  } catch (error) {
+    return res.json({
+      error: "Internal server error",
+      user: null,
     });
   }
 });

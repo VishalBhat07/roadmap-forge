@@ -2,9 +2,13 @@ import React from "react";
 import styles from "./EnrollPopup.module.css";
 import getRoadmapInfo from "../../util/getRoadmapInfo";
 import enrollUserCourse from "../../util/enrollUserCourse";
+import sendEnrollmentData from "../../util/sendEnrollmentData";
+import { useParams } from "react-router-dom";
 
 const EnrollPopup = ({ setEnrollPopup, roadmapTitle }) => {
   const roadmap = getRoadmapInfo(roadmapTitle);
+  const currentUser = JSON.parse(localStorage.getItem("loginState"));
+  const params = useParams();
   return (
     <div className={styles.editProfile}>
       <div className={styles.header}>
@@ -38,6 +42,7 @@ const EnrollPopup = ({ setEnrollPopup, roadmapTitle }) => {
             onClick={() => {
               setEnrollPopup((enrollPopup) => !enrollPopup);
               enrollUserCourse(roadmapTitle);
+              sendEnrollmentData(currentUser.user.username, params.id);
             }}
           >
             YES
