@@ -1,5 +1,6 @@
 .accordion {
-  border: 1px solid white;
+  border-radius: 8px;
+  background-color: rgb(48, 43, 52);
   color: white;
   margin: 10px;
   min-width: 600px;
@@ -15,10 +16,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
 }
 
 .header {
-  cursor: pointer;
+  font-size: 18px;
 }
 
 .button {

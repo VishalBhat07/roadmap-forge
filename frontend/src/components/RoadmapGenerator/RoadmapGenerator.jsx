@@ -1,5 +1,6 @@
 import React from "react";
 import Accordion from "../Accordion/Accordion.jsx";
+import List from "../List/List.jsx";
 
 const RoadmapGenerator = ({ roadmap }) => {
   return (
@@ -10,11 +11,7 @@ const RoadmapGenerator = ({ roadmap }) => {
           id={section.id}
           title={section.title}
           content={section.topics.map((topic) => (
-            <Accordion
-              key={topic.name}
-              title={topic.name}
-              content={topic.details}
-            />
+            <List key={topic.name} title={topic.name} content={topic.details} />
           ))}
         />
       ))}

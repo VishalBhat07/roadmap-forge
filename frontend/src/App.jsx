@@ -14,6 +14,7 @@ import Profile from "./pages/Profile/Profile.jsx";
 import AuthContext from "./context/authContext.js";
 import { useState } from "react";
 import { ToastContainer } from "react-toastify";
+import Topic from "./pages/Topic/Topic.jsx";
 
 function App() {
   const [loginState, setLoginState] = useState({
@@ -32,6 +33,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/roadmaps" element={<Roadmaps />} />
             <Route path="/roadmaps/:id" element={<Roadmap />} />
+            <Route path="/roadmaps/:roadmap/:topicid" element={<Topic />} />
             <Route path="/community" element={<WorkInProgressPage />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="*" element={<NotFoundPage />} />
