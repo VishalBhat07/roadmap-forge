@@ -320,3 +320,26 @@ app.get("/fetchProgress/:username/:roadmap/:topic", async (req, res) => {
     });
   }
 });
+
+// Fetch all topics for a given roadmap and user
+app.get("/fetchTopics/:username/:roadmap/", async (req, res) => {
+  try {
+    const { username, roadmap } = req.params;
+    console.log(username);
+    console.log(roadmap);
+
+    const findUser = await courseProgressModel.findOne({ username, roadmap });
+
+    const topics = findUser.topicsCompleted;
+
+    res.json({
+      message: "User progress updated",
+      topics: topics,
+    });
+  } catch (error) {
+    res.json({
+      message: "Internal server error",
+      topics: null,
+    });
+  }
+});
