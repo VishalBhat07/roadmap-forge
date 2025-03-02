@@ -29,8 +29,11 @@ const Signup = () => {
 
     try {
       const res = await createUser(userData);
+      console.log(res);
       if (!res.user) {
-        toast.error(res.error);
+        if (res.message === "Username is already taken")
+          toast("Username is already taken");
+        else toast.error(res.error);
       } else {
         toast.success(res.message);
         setTimeout(() => navigate("/"), 4000);
@@ -55,8 +58,27 @@ const Signup = () => {
   return !currentUser ? (
     <>
       <div className={styles.container}>
+        <div
+          className={styles.header}
+          style={{
+            cursor: "pointer",
+          }}
+          onClick={() => navigate("/")}
+        >
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "10px",
+            }}
+          >
+            <p className={styles.roadmapforge}>RoadMapForge</p>
+            <i className="fa-solid fa-hammer"></i>
+          </div>
+        </div>
         <div className={styles.modal}>
-          <div className={styles.header}>
+          <div className={styles.modaltitle}>
             <p>Create an account !</p>
           </div>
           <div className={styles.signin}>

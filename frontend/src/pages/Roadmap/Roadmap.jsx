@@ -19,7 +19,7 @@ const Roadmap = () => {
   const currentUser = JSON.parse(localStorage.getItem("loginState"));
 
   useEffect(() => {
-    fetchAllTopics(currentUser.user.username, roadmapTitle)
+    fetchAllTopics(currentUser?.user.username, roadmapTitle)
       .then((res) => {
         console.log(res);
         setProgress(res);
@@ -28,9 +28,8 @@ const Roadmap = () => {
         console.log(err);
       });
 
-    fetchUserCourses(currentUser.user.username)
+    fetchUserCourses(currentUser?.user.username)
       .then((res) => {
-        // console.log(res.enrolledRoadmaps);
         const isEnrolled = res.enrolledRoadmaps.find(
           (roadmap) => roadmap.title === roadmapTitle
         );

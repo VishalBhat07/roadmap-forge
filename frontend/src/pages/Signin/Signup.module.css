@@ -1,33 +1,63 @@
+/* Overall Container */
 .container {
-  height: 80vh;
-  background-color: black;
+  min-height: 100vh;
+  background: black;
   color: white;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1;
-}
-
-.modal {
-  display: flex;
-  align-items: center;
   flex-direction: column;
-  border: 2px solid blueviolet;
-  border-radius: 12px;
-  padding: 30px;
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 0 10px rgba(138, 43, 226, 0.6);
-  width: 100%;
-  max-width: 400px;
-  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
 
 /* Header */
-.header p {
+.header {
+  margin-bottom: 20px;
+}
+
+.header div p {
   font-size: 28px;
   font-weight: bold;
-  margin-bottom: 15px;
   color: white;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.header div i {
+  font-size: 28px;
+}
+
+.header div p:hover {
+  text-decoration: underline;
+}
+
+/* Modal Container */
+.modalcontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.modaltitle {
+  font-size: 18px;
+  margin-bottom: 18px;
+}
+
+/* Modal */
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid blueviolet;
+  border-radius: 12px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.7);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
 }
 
 /* Sign-in Form */
@@ -39,46 +69,48 @@
   gap: 20px;
 }
 
+/* Input Fields */
 .signin form input {
   width: 100%;
-  padding: 10px 20px;
-  border-radius: 6px;
-  border: 1px solid #666;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #777;
   outline: none;
-  background-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.15);
   color: white;
   font-size: 16px;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
 .signin form input:focus {
   border-color: blueviolet;
-  box-shadow: 0 0 8px rgba(138, 43, 226, 0.7);
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.8);
 }
 
-/* CTA Button */
 .ctaButton {
   width: 80%;
-  padding: 12px;
-  font-size: 18px;
+  padding: 10px 14px;
+  font-size: 16px;
   font-weight: bold;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: 0.3s;
-  background-color: blueviolet;
+  transition: all 0.3s ease;
+  background: linear-gradient(45deg, blueviolet, rgb(116, 28, 206));
   color: white;
-  margin-top: 10px;
+  text-transform: uppercase;
 }
 
 .ctaButton:hover {
-  background-color: rgb(116, 28, 206);
+  background: linear-gradient(45deg, rgb(116, 28, 206), blueviolet);
   transform: scale(1.05);
+  box-shadow: 0 0 12px rgba(138, 43, 226, 0.8);
 }
 
-.switch p {
-  font-size: 14px;
+.switch {
   margin-top: 15px;
+  font-size: 14px;
+  text-align: center;
 }
 
 .switch a {
@@ -91,9 +123,17 @@
   text-decoration: underline;
 }
 
-/* Responsive Design */
 @media (max-width: 480px) {
   .modal {
     width: 90%;
+    padding: 20px;
+  }
+
+  .header p {
+    font-size: 24px;
+  }
+
+  .ctaButton {
+    font-size: 16px;
   }
 }

@@ -6,6 +6,7 @@ const userModel = require("./Models/userModel");
 const imageModel = require("./Models/imageModel");
 const bcrypt = require("bcrypt");
 const multer = require("multer");
+const crypto = require("crypto");
 const courseProgressModel = require("./Models/courseProgressModel");
 
 const port = process.env.PORT || 8080;
@@ -36,6 +37,16 @@ app.listen(port, () => {
 app.post("/register", async (req, res) => {
   try {
     const { username, email, password } = req.body;
+    // console.log(username, email, password);
+
+    const user = await userModel.findOne({ username });
+
+    if (user)
+      return res.json({
+        message: "Username is already taken",
+        user: null,
+      });
+
     const salt = await bcrypt.genSalt(10);
     const hashpassword = await bcrypt.hash(password, salt);
 
@@ -340,6 +351,83 @@ app.get("/fetchTopics/:username/:roadmap/", async (req, res) => {
     res.json({
       message: "Internal server error",
       topics: null,
+    });
+  }
+});
+
+// Add a verification code to userSchema when clicked on forget password
+app.post("/verificationcode", async (req, res) => {
+  try {
+    const { userEmail } = req.body;
+
+    const user = await userModel.findOne({ email: userEmail });
+
+    if (!user) {
+      return res.json({
+        message: "User not found in DB",
+        user: null,
+      });
+    }
+
+    const verificationCode = crypto.randomInt(100000, 999999).toString();
+    console.log(verificationCode);
+
+    const salt = await bcrypt.genSalt(10);
+    const hashedCode = await bcrypt.hash(verificationCode, salt);
+
+    user.forgotPasswordCode = hashedCode;
+    user.forgotPasswordCodeExpires = Date.now() + 1 * 60 * 1000;
+
+    await user.save();
+
+    console.log(user);
+
+    res.json({
+      message: "Data recieved at backend",
+      user: user,
+    });
+  } catch (err) {
+    res.json({
+      message: "Internal server error",
+    });
+  }
+});
+
+// Verify the code entered by the user
+app.post("/verifycode", async (req, res) => {
+  try {
+    const { userEmail, verificationCode } = req.body;
+
+    const user = await userModel.findOne({ email: userEmail });
+
+    if (!user) {
+      return res.json({
+        message: "User not found in DB",
+      });
+    }
+
+    if (
+      !user.forgotPasswordCodeExpires ||
+      Date.now() > user.forgotPasswordCodeExpires
+    ) {
+      return res.json({
+        message: "Verification code expired",
+      });
+    }
+
+    const isMatch = await bcrypt.compare(
+      verificationCode,
+      user.forgotPasswordCode
+    );
+
+    if (!isMatch) {
+      return res.json({ message: "Invalid verification code" });
+    }
+
+    res.json({ message: "Code verified successfully", verified: true });
+  } catch (error) {
+    res.json({
+      message: "Internal server error",
     });
   }
 });
