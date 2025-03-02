@@ -10,8 +10,8 @@ const userSchema = new mongoose.Schema({
       date: { type: Date, default: Date.now },
     },
   ],
-  forgotPasswordCode: { type: String },
-  forgotPasswordCodeExpires: { type: Date },
+  forgotPasswordCode: { type: String, unique: true },
+  forgotPasswordCodeExpires: { type: Date, unique: true },
 });
 
 module.exports = userSchema;

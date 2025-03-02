@@ -8,6 +8,7 @@ const bcrypt = require("bcrypt");
 const multer = require("multer");
 const crypto = require("crypto");
 const courseProgressModel = require("./Models/courseProgressModel");
+const sendEmail = require("./utils/mailSender.js");
 
 const port = process.env.PORT || 8080;
 const mongodbURL = process.env.MONGODBURL;
@@ -40,6 +41,7 @@ app.post("/register", async (req, res) => {
     // console.log(username, email, password);
 
     const user = await userModel.findOne({ username });
+    // console.log(user);
 
     if (user)
       return res.json({
@@ -48,9 +50,14 @@ app.post("/register", async (req, res) => {
       });
 
     const salt = await bcrypt.genSalt(10);
-    const hashpassword = await bcrypt.hash(password, salt);
+    const hashedpassword = await bcrypt.hash(password, salt);
 
-    const newUser = new userModel({ username, email, password: hashpassword });
+    const newUser = new userModel({
+      username,
+      email,
+      password: hashedpassword,
+    });
+    // console.log(newUser);
     const savedUser = await newUser.save();
 
     if (!savedUser) {
@@ -277,9 +284,9 @@ app.post("/userProgress", async (req, res) => {
 app.post("/updateProgress", async (req, res) => {
   try {
     const { username, roadmap, topic } = req.body;
-    console.log(username);
-    console.log(roadmap);
-    console.log(topic);
+    // console.log(username);
+    // console.log(roadmap);
+    // console.log(topic);
 
     const findUser = await courseProgressModel.findOne({ username, roadmap });
     const topicToBeUpdated = findUser.topicsCompleted.find(
@@ -309,9 +316,9 @@ app.post("/updateProgress", async (req, res) => {
 app.get("/fetchProgress/:username/:roadmap/:topic", async (req, res) => {
   try {
     const { username, roadmap, topic } = req.params;
-    console.log(username);
-    console.log(roadmap);
-    console.log(topic);
+    // console.log(username);
+    // console.log(roadmap);
+    // console.log(topic);
 
     const findUser = await courseProgressModel.findOne({ username, roadmap });
     const topicToBeUpdated = findUser.topicsCompleted.find(
@@ -336,8 +343,8 @@ app.get("/fetchProgress/:username/:roadmap/:topic", async (req, res) => {
 app.get("/fetchTopics/:username/:roadmap/", async (req, res) => {
   try {
     const { username, roadmap } = req.params;
-    console.log(username);
-    console.log(roadmap);
+    // console.log(username);
+    // console.log(roadmap);
 
     const findUser = await courseProgressModel.findOne({ username, roadmap });
 
@@ -370,7 +377,7 @@ app.post("/verificationcode", async (req, res) => {
     }
 
     const verificationCode = crypto.randomInt(100000, 999999).toString();
-    console.log(verificationCode);
+    // console.log(verificationCode);
 
     const salt = await bcrypt.genSalt(10);
     const hashedCode = await bcrypt.hash(verificationCode, salt);
@@ -380,7 +387,9 @@ app.post("/verificationcode", async (req, res) => {
 
     await user.save();
 
-    console.log(user);
+    const subject = "Your Password Reset Code";
+    const text = `Your verification code is: ${verificationCode}. It will expire in 1 minute.`;
+    sendEmail(userEmail, subject, text);
 
     res.json({
       message: "Data recieved at backend",
@@ -425,6 +434,36 @@ app.post("/verifycode", async (req, res) => {
     }
 
     res.json({ message: "Code verified successfully", verified: true });
+  } catch (error) {
+    res.json({
+      message: "Internal server error",
+    });
+  }
+});
+
+// Reset password
+app.post("/resetpassword", async (req, res) => {
+  try {
+    const { userEmail, newPassword } = req.body;
+
+    const user = await userModel.findOne({ email: userEmail });
+
+    if (!user) {
+      return res.json({
+        message: "User not found in DB",
+      });
+    }
+
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(newPassword, salt);
+
+    user.password = hashedPassword;
+    user.forgotPasswordCode = undefined;
+    user.forgotPasswordCodeExpires = undefined;
+
+    await user.save();
+
+    res.json({ message: "Password changed successfully" });
   } catch (error) {
     res.json({
       message: "Internal server error",
