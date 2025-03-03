@@ -388,7 +388,6 @@ app.post("/verificationcode", async (req, res) => {
     await user.save();
 
     const subject = "Your Password Reset Code";
-    const text = `Your verification code is: ${verificationCode}. It will expire in 1 minute.`;
     sendEmail(userEmail, subject, verificationCode);
 
     res.json({

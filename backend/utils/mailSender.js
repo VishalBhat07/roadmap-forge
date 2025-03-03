@@ -6,9 +6,28 @@ async function sendEmail(
   subject,
   text,
   buttonText = "Get Started",
-  buttonLink = "https://roadmapforge.com"
+  buttonLink = "https://roadmapforge.vercel.app"
 ) {
-  console.log(userEmail);
+  const date = new Date();
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "April",
+    "May",
+    "June",
+    "July",
+    "Aug",
+    "Sept",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
+  const day = date.getDate();
+  const month = months[date.getMonth()];
+  const year = date.getFullYear();
+
   try {
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -65,7 +84,7 @@ async function sendEmail(
               </td>
               <td style="text-align: right">
                 <span style="font-size: 16px; line-height: 30px; color: #ffffff"
-                  >12 Nov, 2021</span
+                  >${day} ${month}, ${year}</span
                 >
               </td>
             </tr>
