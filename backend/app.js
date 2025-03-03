@@ -389,7 +389,7 @@ app.post("/verificationcode", async (req, res) => {
 
     const subject = "Your Password Reset Code";
     const text = `Your verification code is: ${verificationCode}. It will expire in 1 minute.`;
-    sendEmail(userEmail, subject, text);
+    sendEmail(userEmail, subject, verificationCode);
 
     res.json({
       message: "Data recieved at backend",

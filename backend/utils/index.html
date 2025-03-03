@@ -1,27 +1,4 @@
-require("dotenv").config();
-const nodemailer = require("nodemailer");
-
-async function sendEmail(
-  userEmail,
-  subject,
-  text,
-  buttonText = "Get Started",
-  buttonLink = "https://roadmapforge.com"
-) {
-  console.log(userEmail);
-  try {
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      port: 465,
-      secure: true,
-      auth: {
-        user: process.env.ADMIN_EMAIL,
-        pass: process.env.ADMIN_EMAIL_PASSWORD,
-      },
-    });
-
-    const htmlContent = `
-     <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -220,22 +197,3 @@ async function sendEmail(
     </div>
   </body>
 </html>
-
-    `;
-
-    const info = await transporter.sendMail({
-      from: `"RoadMapForge" <${process.env.ADMIN_EMAIL}>`,
-      to: userEmail,
-      subject: subject,
-      html: htmlContent,
-    });
-
-    console.log("Email sent:", info.messageId);
-    return { success: true, messageId: info.messageId };
-  } catch (error) {
-    console.error("Error sending email:", error);
-    return { success: false, error: error.message };
-  }
-}
-
-module.exports = sendEmail;
