@@ -3,10 +3,9 @@
   align-items: center;
   justify-content: space-between;
   padding: 4rem 8%;
-  background-color: var(--secondary);
-  min-height: 60vh;
-  color: white;
-  background-color: black;
+  min-height: 80vh;
+  color: var(--secondary);
+  background-color: var(--tertiary);
   gap: 20px;
 }
 
@@ -51,14 +50,14 @@
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
-  background-color: transparent;
-  color: white;
-  border: 2px solid blueviolet;
+  background-color: var(--primary);
+  color: var(--tertiary);
+  border: 2px solid var(--tertiary);
 }
 
 .ctaButton:hover {
-  background-color: blueviolet;
-  color: white;
+  background-color: var(--secondary);
+  color: var(--tertiary);
   transform: scale(1.05);
 }
 

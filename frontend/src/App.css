@@ -1,14 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&display=swap");
 
 :root {
-    --primary: #000000;
-    --secondary: #ffffff;
-    --ter: #6A42C2;
-    --quat: #563A9C;
-  }
-  
-*{
-    margin: 0;
-    padding: 0;
-    font-family: "Baloo Bhaijaan 2", 'Times New Roman', Times, serif;
+  --primary: #606c38;
+  --secondary: #283618;
+  --tertiary: #fefae0;
+  --quat: #dda15e;
+  --pent: #bc6c25;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Baloo Bhaijaan 2", "Times New Roman", Times, serif;
 }

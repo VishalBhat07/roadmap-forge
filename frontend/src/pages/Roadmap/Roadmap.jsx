@@ -61,7 +61,7 @@ const Roadmap = () => {
         <div className={styles.courseInfo}>{roadmapTitle}</div>
         <div className={styles.buttons}>
           {enrolled ? (
-            <button style={{ backgroundColor: "blueviolet" }}>
+            <button className={styles.progressbar}>
               <p> Progress : {progress * 100}%</p>{" "}
               <i className="fa-solid fa-spinner"></i>
             </button>

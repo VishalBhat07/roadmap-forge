@@ -92,7 +92,7 @@ const Navbar = () => {
           )}
         </ul>
       </nav>
-      <hr className={styles.hrStyle} />
+      {/* <hr className={styles.hrStyle} /> */}
     </>
   );
 };

@@ -1,6 +1,6 @@
 .container {
-  background-color: black;
-  color: white;
+  background-color: var(--tertiary);
+  color: var(--primary);
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -27,7 +27,8 @@
   min-width: 200px;
   border-radius: 20px;
   border: none;
-  background-color: white;
+  color: var(--tertiary);
+  background-color: var(--primary);
   font-size: 20px;
   font-weight: 500;
 }

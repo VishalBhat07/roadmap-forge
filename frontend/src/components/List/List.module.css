@@ -1,9 +1,8 @@
 .list {
-  border-bottom: 2px solid blueviolet;
+  border-bottom: 2px solid var(--pent);
   border-radius: 8px;
-  /* background-color: rgb(48, 43, 52); */
-  background-color: black;
-  color: yellow;
+  background-color: var(--tertiary);
+  color: var(--pent);
   margin: 15px;
   min-width: 600px;
   padding: 20px;
@@ -21,6 +20,7 @@
 }
 
 .header {
+  font-weight: 600;
   cursor: pointer;
 }
 
@@ -29,11 +29,11 @@
 }
 
 .button {
-  background-color: rgb(48, 43, 52);
+  color: var(--tertiary);
   border: none;
   cursor: pointer;
   border-radius: 15px;
-  color: white;
+  background-color: var(--pent);
   padding: 5px 18px;
   font-size: 14px;
   transition: all 0.3s ease;
@@ -43,10 +43,10 @@
 }
 
 .button:hover {
-  background-color: blueviolet;
+  background-color: var(--secondary);
   transform: scale(1.05);
 }
 
 .content {
-  color: white;
+  color: var(--secondary);
 }

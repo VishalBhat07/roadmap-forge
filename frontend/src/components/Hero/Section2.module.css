@@ -4,9 +4,9 @@
   align-items: center;
   justify-content: space-between;
   padding: 4rem 8%;
-  min-height: 60vh;
-  color: white;
-  background-color: black;
+  min-height: 80vh;
+  color: var(--tertiary);
+  background-color: var(--primary);
 }
 
 .containerReverse {
@@ -61,14 +61,14 @@
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
-  background-color: transparent;
-  color: white;
-  border: 2px solid blueviolet;
+  background-color: var(--tertiary);
+  color: var(--secondary);
+  border: 2px solid var(--tertiary);
 }
 
 .ctaButton:hover {
-  background-color: blueviolet;
-  color: white;
+  color: var(--tertiary);
+  background-color: var(--secondary);
   transform: scale(1.05);
 }
 

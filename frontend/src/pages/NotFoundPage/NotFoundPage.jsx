@@ -13,9 +13,9 @@ const NotFoundPage = () => {
           fontSize={"220px"}
           fontWeight={900}
           fontFamily={"inherit"}
-          color={"blueviolet"}
+          color={"#606c38"}
           enableHover={true}
-          baseIntensity={0.35}
+          baseIntensity={0.25}
           hoverIntensity={0.5}
         >
           404
@@ -27,7 +27,7 @@ const NotFoundPage = () => {
           fontSize={"40px"}
           fontWeight={900}
           fontFamily={"inherit"}
-          color={"blueviolet"}
+          color={"#606c38"}
           enableHover={true}
           baseIntensity={0.2}
           hoverIntensity={0.5}

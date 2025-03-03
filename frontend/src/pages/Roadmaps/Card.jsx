@@ -35,7 +35,10 @@ const Card = ({ id, title, description, difficulty, duration }) => {
       <div className={styles.description}>{description}</div>
       <div
         className={styles.difficulty}
-        style={{ backgroundColor: `${getDifficultyColor(difficulty)}` }}
+        style={{
+          backgroundColor: `${getDifficultyColor(difficulty)}`,
+          color: "var(--tertiary)",
+        }}
       >
         {difficulty}
       </div>

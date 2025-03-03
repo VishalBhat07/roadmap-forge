@@ -1,11 +1,11 @@
 .wrapper {
-  background-color: black;
+  background-color: var(--tertiary);
 }
 
 .container {
   padding: 1% 12%;
-  color: white;
-  background-color: #212121;
+  color: var(--tertiary);
+  background-color: var(--primary);
   position: relative;
   clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 100%);
   padding-top: 8%;
@@ -39,11 +39,12 @@
 
 .social > ul > li {
   cursor: pointer;
-  font-size: 20px;
+  font-size: 23px;
+  transition: all 0.3s ease;
 }
 
 .social > ul > li:hover {
-  color: blueviolet;
+  color: var(--secondary);
   transform: scale(1.2);
 }
 
@@ -76,28 +77,28 @@
   width: 80%;
   padding: 6px;
   border-radius: 4px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--secondary);
   outline: none;
-  background-color: black;
-  color: white;
+  background-color: var(--tertiary);
+  color: var(--secondary);
   font-size: 14px;
 }
 
 .emailInput input:focus {
-  border-color: blueviolet;
-  box-shadow: 0 0 5px rgba(138, 43, 226, 0.5);
+  border-color: var(--pent);
+  box-shadow: 0 0 5px var(--pent);
 }
 
 .signUp {
   width: 30%;
   padding: 6px;
-  color: white;
-  background-color: blueviolet;
+  color: var(--secondary);
+  background-color: var(--tertiary);
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   margin-top: 10px;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 14px;
   margin-top: 15px;
 }
 
@@ -106,7 +107,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 2%;
-  border-top: 1px solid #444;
+  border-top: 1px solid var(--pent);
   font-size: 14px;
   opacity: 0.8;
 }
@@ -114,7 +115,7 @@
 .columnheaders {
   max-width: 200px;
   margin-bottom: 7%;
-  border-bottom: 2px solid blueviolet;
+  border-bottom: 2px solid var(--pent);
   font-weight: bold;
   font-size: 1.2rem;
 }

@@ -4,8 +4,8 @@
   align-items: center;
   justify-content: center;
   min-height: 80vh;
-  background-color: black;
-  color: white;
+  background-color: var(--tertiary);
+  color: var(--tertiary);
   padding: 0 10%;
 }
 
@@ -13,7 +13,7 @@
   display: flex;
   width: 100%;
   max-width: 800px;
-  background: #1e1e1e;
+  background: var(--primary);
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -33,7 +33,7 @@
   height: 120px;
   border-radius: 50%;
   overflow: hidden;
-  border: 3px solid blueviolet;
+  border: 3px solid var(--tertiary);
 }
 
 .userinfo {
@@ -57,7 +57,7 @@
 .date {
   font-size: 16px;
   margin: 5px 0;
-  color: #ddd;
+  color: var(--tertiary);
 }
 
 .right {
@@ -74,17 +74,18 @@
 }
 
 .course {
-  background: #252525;
+  background: var(--secondary);
   padding: 12px;
   border-radius: 8px;
   font-size: 16px;
-  border-left: 4px solid blueviolet;
+  border-left: 4px solid var(--tertiary);
   transition: 0.3s ease-in-out;
 }
 
 .course:hover {
   transform: scale(1.05);
-  background: #333;
+  color: var(--secondary);
+  background: var(--tertiary);
 }
 
 .button {
@@ -105,20 +106,23 @@
 }
 
 .button button:first-child {
-  background: #3498db;
-  color: white;
+  background: var(--pent);
+  color: var(--tertiary);
+  transition: all 0.3s ease;
 }
 
 .button button:last-child {
-  background: #e74c3c;
-  color: white;
+  background: var(--pent);
+  color: var(--tertiary);
+  transition: all 0.3s ease;
 }
 
 .button button:hover {
-  filter: brightness(1.2);
+  transform: scale(1.05);
+  color: var(--secondary);
+  background-color: var(--tertiary);
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .profile-card {
     flex-direction: column;

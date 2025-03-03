@@ -3,10 +3,9 @@
   align-items: center;
   justify-content: space-between;
   padding: 4rem 8%;
-  background-color: var(--secondary);
-  min-height: 70vh;
-  color: white;
-  background-color: black;
+  background-color: var(--tertiary);
+  color: var(--secondary);
+  min-height: 80vh;
 }
 
 .left {
@@ -41,24 +40,24 @@
 }
 
 .btns button:first-child {
-  background-color: blueviolet;
-  color: white;
+  background-color: var(--primary);
+  color: var(--tertiary);
 }
 
 .btns button:first-child:hover {
-  background-color: indigo;
+  background-color: var(--secondary);
   transform: scale(1.05);
 }
 
 .btns button:last-child {
   background-color: transparent;
-  color: white;
-  border: 2px solid blueviolet;
+  border: 2px solid var(--primary);
+  color: var(--secondary);
 }
 
 .btns button:last-child:hover {
-  background-color: blueviolet;
-  color: white;
+  background-color: var(--primary);
+  color: var(--tertiary);
   transform: scale(1.05);
 }
 
