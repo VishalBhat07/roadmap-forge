@@ -22,12 +22,12 @@ import AuthContext from "./context/authContext.js";
 import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import Topic from "./pages/Topic/Topic.jsx";
+import ForgotPassword from "./components/ForgotPassword/ForgotPassword.jsx";
 
 function AppContent() {
-  const paths = ["/login", "/signup"];
+  const paths = ["/login", "/signup", "/forgotpassword"];
   const location = useLocation();
   const hide = paths.includes(location.pathname);
-  // console.log(location, hide);
 
   return (
     <>
@@ -41,6 +41,7 @@ function AppContent() {
         <Route path="/roadmaps/:roadmap/:topicid" element={<Topic />} />
         <Route path="/community" element={<WorkInProgressPage />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/forgotpassword" element={<ForgotPassword />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       {!hide && <Footer />}

@@ -377,13 +377,15 @@ app.post("/verificationcode", async (req, res) => {
     }
 
     const verificationCode = crypto.randomInt(100000, 999999).toString();
+    const expiryTimeInMinutes = 2;
     // console.log(verificationCode);
 
     const salt = await bcrypt.genSalt(10);
     const hashedCode = await bcrypt.hash(verificationCode, salt);
 
     user.forgotPasswordCode = hashedCode;
-    user.forgotPasswordCodeExpires = Date.now() + 1 * 60 * 1000;
+    user.forgotPasswordCodeExpires =
+      Date.now() + expiryTimeInMinutes * 60 * 1000;
 
     await user.save();
 

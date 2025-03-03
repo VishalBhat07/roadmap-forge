@@ -4,7 +4,8 @@ import { toast } from "react-toastify";
 const getForgotPasswordCode = async (
   userEmail,
   verificationCode,
-  setVerified
+  setVerified,
+  setShowTimer
 ) => {
   const backendUrl = import.meta.env.VITE_BACKENDURL;
   try {
@@ -16,6 +17,7 @@ const getForgotPasswordCode = async (
     if (res.data.verified) {
       toast.success(res.data.message);
       setVerified((verified) => !verified);
+      setShowTimer(false);
     } else toast.error(res.data.message);
   } catch (error) {
     toast.error("Internal server error");
