@@ -46,7 +46,8 @@ const Navbar = () => {
           {localStorage.getItem("loginState") !== null ? (
             <li
               className={styles.dropdown}
-              onClick={() => setDropdownOpen((prev) => !prev)}
+              onMouseEnter={() => setDropdownOpen(true)}
+              onMouseLeave={() => setDropdownOpen(false)}
             >
               <div className={styles.dropdownHeader}>
                 <button className={styles.profileButton}>
@@ -60,10 +61,14 @@ const Navbar = () => {
                 </button>
               </div>
               {dropdownOpen && (
-                <div className={styles.dropdownContent}>
+                <div
+                  className={styles.dropdownContent}
+                  onClick={() => setDropdownOpen(false)}
+                >
                   <div>
                     <Link className={styles.dropdownLinks} to={"/profile"}>
-                      My Profile
+                      <p>My Profile</p>
+                      <i class="fa-solid fa-id-card"></i>
                     </Link>
                   </div>
                   <div>
@@ -72,12 +77,14 @@ const Navbar = () => {
                       to={"/"}
                       onClick={handleSignOut}
                     >
-                      Sign out
+                      <p>Sign out</p>
+                      <i class="fa-solid fa-right-from-bracket"></i>
                     </Link>
                   </div>
                   <div>
                     <Link className={styles.dropdownLinks} to={"/settings"}>
-                      Settings
+                      <p>Settings</p>
+                      <i class="fa-solid fa-gear"></i>
                     </Link>
                   </div>
                 </div>
