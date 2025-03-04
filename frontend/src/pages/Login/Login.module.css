@@ -1,8 +1,8 @@
 /* Overall Container */
 .container {
   min-height: 100vh;
-  background: black;
-  color: white;
+  background: var(--tertiary);
+  color: var(--secondary);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,13 +18,14 @@
 .header div p {
   font-size: 28px;
   font-weight: bold;
-  color: white;
+  color: var(--primary);
   text-align: center;
   transition: all 0.3s ease;
 }
 
 .header div i {
   font-size: 28px;
+  color: var(--primary);
 }
 
 .header div p:hover {
@@ -42,6 +43,7 @@
 .modaltitle {
   font-size: 18px;
   margin-bottom: 18px;
+  color: var(--tertiary);
 }
 
 /* Modal */
@@ -49,15 +51,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid blueviolet;
+  border: 2px solid var(--quat);
   border-radius: 12px;
   padding: 30px;
-  background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 0 15px rgba(138, 43, 226, 0.7);
+  background: var(--primary);
+  box-shadow: 0 0 15px var(--quat);
   width: 100%;
   max-width: 400px;
   text-align: center;
   transition: all 0.3s ease-in-out;
+  color: var(--tertiary);
 }
 
 /* Sign-in Form */
@@ -74,17 +77,17 @@
   width: 100%;
   padding: 12px;
   border-radius: 8px;
-  border: 1px solid #777;
+  border: 1px solid var(--quat);
   outline: none;
-  background: rgba(255, 255, 255, 0.15);
-  color: white;
+  background: var(--tertiary);
+  color: var(--secondary);
   font-size: 16px;
   transition: all 0.3s ease;
 }
 
 .signin form input:focus {
-  border-color: blueviolet;
-  box-shadow: 0 0 10px rgba(138, 43, 226, 0.8);
+  border-color: var(--pent);
+  box-shadow: 0 0 10px var(--pent);
 }
 
 .ctaButton {
@@ -96,15 +99,14 @@
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
-  background: linear-gradient(45deg, blueviolet, rgb(116, 28, 206));
-  color: white;
+  background: var(--quat);
+  color: var(--secondary);
   text-transform: uppercase;
 }
 
 .ctaButton:hover {
-  background: linear-gradient(45deg, rgb(116, 28, 206), blueviolet);
   transform: scale(1.05);
-  box-shadow: 0 0 12px rgba(138, 43, 226, 0.8);
+  box-shadow: 0 0 12px var(--pent);
 }
 
 .switch {
@@ -114,7 +116,7 @@
 }
 
 .switch a {
-  color: blueviolet;
+  color: var(--quat);
   text-decoration: none;
   font-weight: bold;
 }

@@ -117,7 +117,8 @@ const ForgotPassword = () => {
         )}
 
         <Link to={"/"} className={styles.homebtn}>
-          Go to home
+          <p>Go to home</p>
+          <i className="fa-solid fa-home"></i>
         </Link>
       </div>
     </div>
