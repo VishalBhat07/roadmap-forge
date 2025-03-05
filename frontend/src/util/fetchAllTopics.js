@@ -4,7 +4,7 @@ const fetchAllTopics = async (username, roadmap) => {
   const backendUrl = import.meta.env.VITE_BACKENDURL;
   try {
     const res = await Axios.get(
-      backendUrl + `/fetchTopics/${username}/${roadmap}`
+      backendUrl + `/roadmap/fetchTopics/${username}/${roadmap}`
     );
     if (res !== null) {
       let progress = 0;

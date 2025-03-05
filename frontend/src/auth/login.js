@@ -4,7 +4,7 @@ const backendUrl = import.meta.env.VITE_BACKENDURL;
 
 async function login(username, password) {
   try {
-    const res = await Axios.post(backendUrl + "/login", {
+    const res = await Axios.post(backendUrl + "/auth/login", {
       username,
       password,
     });

@@ -9,7 +9,7 @@ const getForgotPasswordCode = async (
 ) => {
   const backendUrl = import.meta.env.VITE_BACKENDURL;
   try {
-    const res = await Axios.post(backendUrl + `/verifycode`, {
+    const res = await Axios.post(backendUrl + `/auth/verifycode`, {
       userEmail,
       verificationCode,
     });

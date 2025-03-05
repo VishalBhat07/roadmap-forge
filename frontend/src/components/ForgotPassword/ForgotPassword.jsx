@@ -22,7 +22,7 @@ const ForgotPassword = () => {
 
   const generateVerificationCode = async () => {
     try {
-      const res = await Axios.post(backendUrl + "/verificationcode", {
+      const res = await Axios.post(backendUrl + "/auth/verificationcode", {
         userEmail,
       });
       if (res.data.user) {

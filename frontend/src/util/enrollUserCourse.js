@@ -5,7 +5,7 @@ const enrollUserCourse = async (roadmapTitle) => {
   const currentUser = JSON.parse(localStorage.getItem("loginState"));
   const backendUrl = import.meta.env.VITE_BACKENDURL;
   try {
-    const res = await Axios.post(backendUrl + "/enroll", {
+    const res = await Axios.post(backendUrl + "/roadmap/enroll", {
       roadmapTitle: roadmapTitle,
       username: currentUser.user.username,
     });

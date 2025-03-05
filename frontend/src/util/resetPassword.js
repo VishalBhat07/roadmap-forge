@@ -1,11 +1,10 @@
 import Axios from "axios";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const resetPassword = async (userEmail, newPassword) => {
   const backendUrl = import.meta.env.VITE_BACKENDURL;
   try {
-    const res = await Axios.post(backendUrl + "/resetpassword", {
+    const res = await Axios.post(backendUrl + "/auth/resetpassword", {
       userEmail,
       newPassword,
     });

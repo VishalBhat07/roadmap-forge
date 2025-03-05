@@ -29,7 +29,7 @@ const Profile = () => {
   const fetchUserPfp = async () => {
     try {
       const pfp = await Axios.get(
-        backendUrl + `/images/${currentUser.user.username}`,
+        backendUrl + `/user/images/${currentUser.user.username}`,
         {
           responseType: "arraybuffer",
         }
@@ -50,7 +50,7 @@ const Profile = () => {
   useEffect(() => {
     fetchUserPfp();
 
-    fetchUserCourses("abc")
+    fetchUserCourses(currentUser.user.username)
       .then((res) => {
         setRoadmaps(res.enrolledRoadmaps);
       })

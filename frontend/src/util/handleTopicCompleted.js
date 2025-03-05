@@ -9,7 +9,7 @@ const handleTopicCompleted = async (roadmap, topicid, setCompleted) => {
   toast.success(`"${topicid}" completed`);
 
   try {
-    const res = await Axios.post(backendUrl + "/updateProgress", {
+    const res = await Axios.post(backendUrl + "/roadmap/updateProgress", {
       username: currentUser.user.username,
       roadmap: allRoadmaps[roadmap].title,
       topic: topicid,

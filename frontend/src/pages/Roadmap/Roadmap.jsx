@@ -62,7 +62,7 @@ const Roadmap = () => {
         <div className={styles.buttons}>
           {enrolled ? (
             <button className={styles.progressbar}>
-              <p> Progress : {progress * 100}%</p>{" "}
+              <p> Progress : {(progress * 100).toFixed(2)}%</p>{" "}
               <i className="fa-solid fa-spinner"></i>
             </button>
           ) : (

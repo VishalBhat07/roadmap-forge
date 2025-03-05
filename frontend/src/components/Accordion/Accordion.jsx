@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import styles from "./Accordion.module.css";
-import { useNavigate, useParams } from "react-router-dom";
 
 const Accordion = ({ id, title, content }) => {
   const [show, setShow] = useState(false);
-  const params = useParams();
-  const navigate = useNavigate();
 
   function handleToggle() {
     setShow(!show);

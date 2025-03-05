@@ -9,7 +9,7 @@ const fetchTopicCompletionStatus = async (
   const backendUrl = import.meta.env.VITE_BACKENDURL;
   try {
     const res = await Axios.get(
-      backendUrl + `/fetchProgress/${username}/${roadmap}/${topic}`
+      backendUrl + `/roadmap/fetchProgress/${username}/${roadmap}/${topic}`
     );
     // console.log(res.data);
     setCompleted(res.data.isCompleted);

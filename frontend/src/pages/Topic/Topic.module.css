@@ -1,19 +1,19 @@
 .container {
   min-height: 70vh;
-  background-color: black;
-  color: white;
+  background-color: var(--tertiary);
+  color: var(--secondary);
   padding: 3% 10%;
 }
 
 .topic {
   font-size: 20px;
   font-weight: 500;
-  border-bottom: 2px solid blueviolet;
+  border-bottom: 2px solid var(--pent);
   margin-bottom: 5%;
 }
 
 .content {
-  border: 2px solid green;
+  /* border: 2px solid green; */
   min-height: 50vh;
 }
 
@@ -35,21 +35,20 @@
   transition: all 0.3s ease;
 }
 
-.content{
+.content {
   padding: 10px;
 }
 
 .navigate {
-  background-color: blueviolet;
+  background-color: var(--pent);
 }
 
 .navigate:hover {
   transform: scale(1.05);
-  background-color: rgb(131, 26, 229);
 }
 
 .completeButton {
-  background-color: blueviolet;
+  background-color: var(--pent);
   display: flex;
   gap: 10px;
   align-items: center;

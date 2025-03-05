@@ -22,7 +22,7 @@ const EditProfile = ({ setEditProfile }) => {
     formData.append("image", image);
     formData.append("user", JSON.stringify(currentUser.user));
     try {
-      const res = await Axios.post(backendUrl + "/uploadpic", formData, {
+      const res = await Axios.post(backendUrl + "/user/uploadpic", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       if (!res.data.error) {

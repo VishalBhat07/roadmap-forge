@@ -15,7 +15,7 @@ const sendEnrollmentData = async (username, roadmapTitle) => {
       });
 
   try {
-    const res = await Axios.post(backendUrl + "/userProgress", {
+    const res = await Axios.post(backendUrl + "/roadmap/userProgress", {
       username: username,
       roadmap: currentRoadmap.title,
       topicsCompleted: topics,
