@@ -4,6 +4,7 @@ const backendUrl = import.meta.env.VITE_BACKENDURL;
 
 export default async function createUser(userData) {
   try {
+    console.log(userData);
     const res = await Axios.post(backendUrl + "/auth/register", userData);
     console.log("Response received:", res.data);
     return res.data;

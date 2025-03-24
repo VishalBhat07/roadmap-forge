@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import styles from "./Topic.module.css";
 import { useNavigate, useParams } from "react-router-dom";
 import allRoadmaps from "../Roadmap/allRoadmaps";
-import dummydata from "./dummydata.js";
 import handleTopicCompleted from "../../util/handleTopicCompleted.js";
 import fetchTopicCompletionStatus from "../../util/fetchTopicCompletionStatus.js";
 import { toast } from "react-toastify";
+import fetchTopicContent from "../../util/fetchTopicContent.js";
+import MarkdownRenderer from "../../components/MarkdownRenderer/MarkdownRenderer.jsx";
 
 const Topic = () => {
   const { roadmap, topicid } = useParams();
+  const [topicContent, setTopicContent] = useState("## Loading...");
   const currentUser = JSON.parse(localStorage.getItem("loginState"));
   const [completed, setCompleted] = useState(false);
   const navigate = useNavigate();
@@ -19,6 +21,10 @@ const Topic = () => {
     topicid,
     setCompleted
   );
+
+  useEffect(() => {
+    fetchTopicContent(allRoadmaps[roadmap].title, topicid, setTopicContent);
+  }, []);
 
   const getRoadmap = (roadmap) => {
     const userRoadmap = allRoadmaps[roadmap].roadmap;
@@ -57,7 +63,9 @@ const Topic = () => {
     <div className={styles.container}>
       <div className={styles.middle}>
         <div className={styles.topic}>{topicid}</div>
-        <div className={styles.content}>{dummydata}</div>
+        <div className={styles.content}>
+          <MarkdownRenderer content={topicContent} />
+        </div>
       </div>
       <div className={styles.buttons}>
         <button onClick={() => getPrevSection()} className={styles.navigate}>
