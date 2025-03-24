@@ -59,3 +59,21 @@
   background-color: green;
   transform: scale(1.1);
 }
+
+.spinner {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--primary);
+  margin-top: 20px;
+  animation: fade 1s infinite alternate;
+}
+
+@keyframes fade {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.5;
+  }
+}

@@ -13,7 +13,7 @@ const WorkInProgressPage = () => {
           fontSize={"120px"}
           fontWeight={900}
           fontFamily={"inherit"}
-          color={"#606c38"}
+          color={"#03045e"}
           enableHover={true}
           baseIntensity={0.25}
           hoverIntensity={0.5}
@@ -27,7 +27,7 @@ const WorkInProgressPage = () => {
           fontSize={"40px"}
           fontWeight={900}
           fontFamily={"inherit"}
-          color={"#606c38"}
+          color={"#03045e"}
           enableHover={true}
           baseIntensity={0.2}
           hoverIntensity={0.5}

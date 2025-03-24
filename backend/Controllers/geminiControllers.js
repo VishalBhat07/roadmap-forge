@@ -1,13 +1,24 @@
 require("dotenv").config();
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const json2md = require("json2md");
+const topicContentModel = require("../Models/topicContentModel");
 const API_KEY = process.env.GEMINI_API_KEY;
 
 const geminiController = async (req, res) => {
-  const { roadmap, title } = req.params;
-  console.log("Roadmap:", roadmap, "Title:", title);
-
   try {
+    const { roadmap, title } = req.params;
+    console.log("Roadmap:", roadmap, "Title:", title);
+
+    let existingContent = await topicContentModel.findOne({ roadmap, title });
+
+    if (existingContent) {
+      console.log("Serving cached content from MongoDB...");
+      return res.json({
+        topicContentMD: existingContent.content,
+        message: "Cached response served",
+      });
+    }
+
     const genAI = new GoogleGenerativeAI(API_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
@@ -42,6 +53,14 @@ const geminiController = async (req, res) => {
 
       // Convert JSON to Markdown
       const markdownContent = json2md(jsonData);
+
+      await topicContentModel.create({
+        roadmap,
+        title,
+        content: markdownContent,
+      });
+
+      console.log("New content cached in MongoDB...");
 
       res.json({
         topicContentMD: markdownContent,
