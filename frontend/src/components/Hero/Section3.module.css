@@ -56,12 +56,12 @@
   transition: all 0.3s ease;
   background-color: var(--primary);
   color: var(--tertiary);
-  border: 2px solid var(--tertiary);
+  border: 2px solid var(--primary);
 }
 
 .ctaButton:hover {
-  background-color: var(--secondary);
-  color: var(--tertiary);
+  background-color: var(--tertiary);
+  color: var(--primary);
   transform: scale(1.05);
 }
 

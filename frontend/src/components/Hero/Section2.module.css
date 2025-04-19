@@ -78,8 +78,8 @@
 }
 
 .ctaButton:hover {
-  color: var(--tertiary);
-  background-color: var(--secondary);
+  color: var(--primary);
+  background-color: var(--quat);
   transform: scale(1.05);
 }
 

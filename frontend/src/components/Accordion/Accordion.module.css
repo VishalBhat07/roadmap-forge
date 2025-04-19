@@ -50,3 +50,23 @@
   max-height: 500px;
   opacity: 1;
 }
+
+@media (max-width: 768px) {
+  .accordion {
+    border-radius: 8px;
+    background-color: var(--primary);
+    color: var(--tertiary);
+    margin: 5px 20px;
+    min-width: 0;
+    padding: 15px;
+    width: 90%;
+  }
+
+  .header {
+    font-size: 0.9rem;
+  }
+
+  .button i {
+    font-size: 0.8rem;
+  }
+}

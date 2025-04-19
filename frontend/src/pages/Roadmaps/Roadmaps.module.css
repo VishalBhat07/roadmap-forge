@@ -19,8 +19,8 @@
 }
 
 .text:focus {
-  border-color: var(--pent);
-  box-shadow: 0 0 5px var(--pent);
+  border-color: var(--primary);
+  box-shadow: 0 0 5px var(--primary);
 }
 
 .container {
@@ -32,4 +32,25 @@
   gap: 40px;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .searchbar {
+    margin-bottom: 10px;
+  }
+
+  .text {
+    font-size: 12px;
+  }
+
+  .container {
+    background-color: var(--tertiary);
+    color: var(--secondary);
+    min-height: 50vh;
+    padding: 3% 10%;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }

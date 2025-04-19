@@ -44,7 +44,7 @@
 }
 
 .social > ul > li:hover {
-  color: var(--secondary);
+  color: var(--quat);
   transform: scale(1.2);
 }
 

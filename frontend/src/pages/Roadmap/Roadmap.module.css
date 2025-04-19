@@ -14,27 +14,31 @@
   width: 100%;
   margin-bottom: 4%;
   color: var(--pent);
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .courseInfo {
-  font-size: 25px;
+  font-size: 2rem;
   font-weight: 600;
   border-bottom: 2px solid var(--pent);
 }
 
 .buttons {
   display: flex;
-  gap: 20px;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .buttons button {
-  color: var(--secondary);
+  color: var(--primary);
   background-color: var(--tertiary);
   padding: 10px 20px;
-  border: 2px solid var(--secondary);
+  border: 2px solid var(--primary);
   border-radius: 4px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 1rem;
   display: flex;
   justify-content: center;
   gap: 10px;
@@ -44,11 +48,53 @@
 
 .buttons button:hover {
   transform: scale(1.05);
-  background-color: var(--secondary);
+  background-color: var(--pent);
   color: var(--tertiary);
 }
 
 .progressbar {
   background-color: var(--tertiary);
   text-align: center;
+}
+
+/* ✅ Responsive Styles */
+@media (max-width: 768px) {
+  .container {
+    padding: 6% 5%;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .courseInfo {
+    font-size: 1.5rem;
+    text-align: left;
+  }
+
+  .buttons {
+    width: 100%;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .buttons button {
+    width: 100%;
+    font-size: 0.95rem;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .courseInfo {
+    font-size: 1.2rem;
+  }
+
+  .buttons button {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+  }
 }
