@@ -43,9 +43,9 @@
   gap: 10px;
   align-items: center; */
 
-  display: flex;  /* Align logo and text in a row */
-  align-items: center;  /* Vertically center the items */
-  gap: 8px;  /* Space between the logo and text */
+  display: flex; /* Align logo and text in a row */
+  align-items: center; /* Vertically center the items */
+  gap: 8px; /* Space between the logo and text */
 }
 
 .a:hover {
@@ -120,4 +120,89 @@
 
 .dropdownLinks:hover {
   background-color: var(--quat);
+}
+
+.hamburger {
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--tertiary);
+  padding: 16px;
+  position: fixed;
+  z-index: 1001;
+}
+
+.hamburger:hover {
+  transform: scale(1.1);
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 75%;
+  max-width: 300px;
+  height: 100vh;
+  background-color: var(--primary);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  z-index: 1000;
+  animation: slideIn 0.3s ease-out;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  border-radius: 0 8px 8px 0;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.sidebarLink {
+  color: var(--tertiary);
+  text-decoration: none;
+  font-size: 18px;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.sidebarLink:hover {
+  color: #ffffff;
+  transform: translateX(5px);
+}
+
+.closeBtn {
+  align-self: flex-end;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--tertiary);
+  margin-bottom: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.closeBtn:hover {
+  transform: rotate(90deg);
+}
+
+/* Show hamburger only on small screens */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .ul {
+    display: none; /* hide navbar */
+  }
 }
