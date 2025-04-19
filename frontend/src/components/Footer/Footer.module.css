@@ -150,3 +150,48 @@
 .designed a:hover {
   color: blueviolet;
 }
+
+@media (max-width: 768px) {
+  @media (max-width: 768px) {
+    .container {
+      padding: 1% 5%;
+      clip-path: none;
+      padding-top: 4%;
+    }
+
+    .top {
+      padding: 1% 1%;
+      flex-wrap: wrap;
+    }
+
+    .social > ul {
+      gap: 12px;
+    }
+
+    .social > ul > li {
+      font-size: 20px;
+    }
+
+    .middle {
+      padding: 1%;
+    }
+
+    .emailInput input {
+      width: 50%;
+      font-size: 10px;
+    }
+
+    .signUp {
+      font-size: 10px;
+      margin-bottom: 5px;
+    }
+
+    .bottom {
+      font-size: 12px;
+    }
+
+    .columnheaders {
+      margin-bottom: 3%;
+    }
+  }
+}

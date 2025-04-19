@@ -5,7 +5,6 @@ const Footer = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.clippedBackground}></div>
-
       <div className={styles.container}>
         <div className={styles.top}>
           <div className={styles.logo}>
