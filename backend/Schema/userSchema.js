@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
       date: { type: Date, default: Date.now },
     },
   ],
-  forgotPasswordCode: { type: String },
+  forgotPasswordCode: { type: String, default: null },
   forgotPasswordCodeExpires: { type: Date },
 });
 

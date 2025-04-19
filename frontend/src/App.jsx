@@ -22,7 +22,7 @@ function AppContent() {
   const hide = paths.includes(location.pathname);
 
   return (
-    <>
+    <div className="app-container">
       {!hide && <Navbar />}
       <Routes>
         <Route path="/" element={<Hero />} />
@@ -38,7 +38,7 @@ function AppContent() {
       </Routes>
       {!hide && <Footer />}
       <ToastContainer autoClose={2000} />
-    </>
+    </div>
   );
 }
 

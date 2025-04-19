@@ -5,11 +5,9 @@ const userModel = require("../Models/userModel");
 const registerController = async (req, res) => {
   try {
     const { username, email, password } = req.body;
-    console.log(username, email, password);
+    console.log("Received data:", { username, email, password });
 
     const user = await userModel.findOne({ username });
-    // console.log(user);
-
     if (user)
       return res.json({
         message: "Username is already taken",
@@ -24,22 +22,29 @@ const registerController = async (req, res) => {
       email,
       password: hashedpassword,
     });
-    // console.log(newUser);
+
+    console.log("New user before saving:", newUser);
+
     const savedUser = await newUser.save();
 
+    console.log("Saved User:", savedUser);
+
     if (!savedUser) {
-      return res.json({
+      return res.status(500).json({
         message: "User registration failed",
         user: null,
       });
     }
+
     return res.json({
       message: "User registered successfully",
       user: savedUser,
     });
   } catch (error) {
-    return res.json({
+    console.error("Error while saving user:", error);
+    return res.status(500).json({
       error: "Internal server error",
+      details: error.message,
     });
   }
 };

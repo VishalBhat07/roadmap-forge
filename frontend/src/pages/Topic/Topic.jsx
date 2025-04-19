@@ -37,7 +37,7 @@ const Topic = () => {
     // Ensure spinner stays visible for at least 5 seconds
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 5000);
+    }, 3000);
 
     return () => clearTimeout(timer); // Cleanup timeout on unmount
   }, [roadmap, topicid]);

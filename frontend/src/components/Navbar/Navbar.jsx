@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import styles from "./Navbar.module.css";
 import { Link } from "react-router-dom";
 import AuthContext from "../../context/authContext";
@@ -6,7 +6,17 @@ import { toast } from "react-toastify";
 
 const Navbar = () => {
   const { loginState, setLoginState } = useContext(AuthContext);
+  const [scrolled, setScrolled] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 30); // Adjust threshold here
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleSignOut = () => {
     setLoginState({ user: null, isLoggedIn: false });
@@ -16,7 +26,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className={styles.nav}>
+      <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ""}`}>
         <ul className={styles.ul}>
           <li className={styles.li}>
             <Link className={styles.a} to={"/"}>

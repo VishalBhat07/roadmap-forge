@@ -8,6 +8,7 @@ const fetchTopicContent = async (roadmapTitle, topicid, setTopicContent) => {
       backendUrl + `/gemini/response/${roadmapTitle}/${topicid}`
     );
     setTopicContent(res.data.topicContentMD);
+    console.log(res.data.topicContentMD);
   } catch (err) {
     console.log(err);
   }
