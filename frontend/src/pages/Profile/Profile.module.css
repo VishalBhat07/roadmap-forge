@@ -1,136 +1,423 @@
+/* Profile.module.css */
+:root {
+  --transition-speed: 0.3s;
+  --border-radius: 12px;
+  --box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+}
+
 .container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   min-height: 80vh;
-  background-color: var(--tertiary);
-  color: var(--tertiary);
-  padding: 0 10%;
+  padding: 2rem;
 }
 
 .profileCard {
   display: flex;
-  width: 100%;
-  max-width: 800px;
-  background: var(--primary);
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  gap: 20px;
+  width: 90%;
+  max-width: 1200px;
+  min-height: 500px;
+  background-color: var(--tertiary);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+  animation: cardAppear 0.6s ease-out;
+  border: 1px solid var(--primary);
+}
+
+@keyframes cardAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .left {
-  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
+  justify-content: flex-start;
+  width: 40%;
+  padding: 2rem;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+  color: var(--tertiary);
+  position: relative;
+  overflow: hidden;
+}
+
+.left::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba(221, 161, 94, 0.2);
+  z-index: 0;
+  animation: float 8s ease-in-out infinite;
+}
+
+.left::after {
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  left: -30px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(188, 108, 37, 0.15);
+  z-index: 0;
+  animation: float 6s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(20px, 20px);
+  }
 }
 
 .profilepic {
-  width: 120px;
-  height: 120px;
+  position: relative;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   overflow: hidden;
-  border: 3px solid var(--tertiary);
+  margin-bottom: 2rem;
+  border: 4px solid var(--quat);
+  box-shadow: 0 0 20px rgba(221, 161, 94, 0.4);
+  z-index: 1;
+  transition: transform var(--transition-speed);
 }
 
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+.profilepic:hover {
+  transform: scale(1.05);
 }
 
 .profilepic img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: filter 0.3s ease;
+}
+
+.profilepic:hover img {
+  filter: brightness(1.1);
 }
 
 .userinfo {
-  margin-top: 15px;
+  width: 100%;
+  z-index: 1;
 }
 
-.username,
-.email,
-.date {
-  font-size: 16px;
-  margin: 5px 0;
-  color: var(--tertiary);
+.userinfo p {
+  margin: 0.8rem 0;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  position: relative;
+  padding-left: 10px;
+}
+
+.userinfo p::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 3px;
+  background-color: var(--quat);
+  transform: scaleY(0);
+  transition: transform 0.2s ease;
+}
+
+.userinfo p:hover::before {
+  transform: scaleY(1);
+}
+
+.icon {
+  margin-right: 10px;
+  color: var(--quat);
+}
+
+.username {
+  font-weight: bold;
+  font-size: 1.2rem !important;
 }
 
 .right {
-  flex: 1;
+  width: 60%;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .courses {
+  height: 70%;
+}
+
+.coursesTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--quat);
+  display: flex;
+  align-items: center;
+}
+
+.coursesList {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 1rem;
+  overflow-y: auto;
+  max-height: 300px;
+  padding-right: 10px;
+}
+
+.coursesList::-webkit-scrollbar {
+  width: 6px;
+}
+
+.coursesList::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.coursesList::-webkit-scrollbar-thumb {
+  background: var(--quat);
+  border-radius: 10px;
 }
 
 .course {
-  background: var(--secondary);
-  padding: 12px;
+  padding: 1rem;
+  background-color: white;
   border-radius: 8px;
-  font-size: 16px;
-  border-left: 4px solid var(--tertiary);
-  transition: 0.3s ease-in-out;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all var(--transition-speed);
+  display: flex;
+  align-items: center;
 }
 
 .course:hover {
-  transform: scale(1.05);
+  transform: translateY(-3px);
+}
+
+.courseIcon {
   color: var(--secondary);
-  background: var(--tertiary);
+  margin-right: 15px;
+  font-size: 1.2rem;
+}
+
+.courseInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.courseTitle {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.courseDate {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 5px;
+}
+
+.noCourses {
+  text-align: center;
+  padding: 2rem;
+  color: #777;
+  font-style: italic;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
 }
 
 .button {
   display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 20px;
+  gap: 1rem;
+  margin-top: 1.5rem;
 }
 
-.button button {
-  padding: 10px 15px;
-  font-size: 16px;
+.editButton,
+.signOutButton {
+  padding: 0.8rem 1.5rem;
+  font-size: 0.8rem;
   border: none;
-  border-radius: 6px;
+  border-radius: 50px;
+  font-weight: 600;
   cursor: pointer;
-  transition: 0.3s;
-  min-width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-speed);
 }
 
-.button button:first-child {
-  background: var(--pent);
-  color: var(--tertiary);
-  transition: all 0.3s ease;
+.buttonIcon {
+  margin-right: 8px;
 }
 
-.button button:last-child {
-  background: var(--pent);
-  color: var(--tertiary);
-  transition: all 0.3s ease;
+.editButton {
+  background-color: var(--quat);
+  color: white;
 }
 
-.button button:hover {
-  transform: scale(1.05);
-  color: var(--secondary);
-  background-color: var(--tertiary);
+.editButton:hover {
+  background-color: var(--pent);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(221, 161, 94, 0.4);
 }
 
-@media (max-width: 768px) {
-  .profile-card {
+.signOutButton {
+  background-color: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.signOutButton:hover {
+  background-color: var(--primary);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(3, 4, 94, 0.2);
+}
+
+/* @media screen and (max-width: 1024px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  .profileCard {
     flex-direction: column;
-    align-items: center;
+    width: 95%;
+    min-height: auto;
+  }
+
+  .left,
+  .right {
+    width: 100%;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
   }
 
   .right {
-    align-items: center;
-    text-align: center;
+    padding-top: 1.5rem;
+  }
+
+  .userinfo p {
+    font-size: 0.95rem;
+  }
+
+  .username {
+    font-size: 1.15rem !important;
+  }
+
+  .coursesTitle {
+    font-size: 1.3rem;
+  }
+
+  .courseTitle {
+    font-size: 1rem;
+  }
+
+  .courseDate {
+    font-size: 0.8rem;
+  }
+
+  .editButton,
+  .signOutButton {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.75rem;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .left {
+    align-items: center;
+    padding: 1.5rem;
+  }
+
+  .profilepic {
+    width: 140px;
+    height: 140px;
+    margin-bottom: 1.5rem;
+  }
+
+  .userinfo p {
+    font-size: 0.9rem;
+  }
+
+  .username {
+    font-size: 1rem !important;
+  }
+
+  .coursesTitle {
+    font-size: 1.2rem;
+  }
+
+  .button {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .editButton,
+  .signOutButton {
+    font-size: 0.7rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .profilepic {
+    width: 120px;
+    height: 120px;
+  }
+
+  .userinfo p {
+    font-size: 0.85rem;
+  }
+
+  .username {
+    font-size: 0.95rem !important;
+  }
+
+  .coursesTitle {
+    font-size: 1.1rem;
+  }
+
+  .courseTitle {
+    font-size: 0.95rem;
+  }
+
+  .courseDate {
+    font-size: 0.75rem;
+  }
+
+  .editButton,
+  .signOutButton {
+    font-size: 0.65rem;
+    padding: 0.4rem 0.9rem;
+  }
+
+  .buttonIcon {
+    margin-right: 4px;
+  }
+
+  .coursesList {
+    max-height: 250px;
+  }
+} */
