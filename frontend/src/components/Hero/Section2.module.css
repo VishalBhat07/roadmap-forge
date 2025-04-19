@@ -7,14 +7,21 @@
   min-height: 80vh;
   color: var(--tertiary);
   background-color: var(--primary);
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
 .containerReverse {
   flex-direction: row-reverse;
 }
 
-.left img {
+.left {
   flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.left img {
   width: 100%;
   max-width: 400px;
   border-radius: 10px;
@@ -42,11 +49,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .box ul {
   list-style: none;
   padding: 0;
+  flex: 1;
 }
 
 .box ul li {
@@ -64,6 +74,7 @@
   background-color: var(--tertiary);
   color: var(--secondary);
   border: 2px solid var(--tertiary);
+  flex-shrink: 0;
 }
 
 .ctaButton:hover {
@@ -72,7 +83,7 @@
   transform: scale(1.05);
 }
 
-/* Responsive Design */
+/* Tablet (<=1024px) */
 @media (max-width: 1024px) {
   .container,
   .containerReverse {
@@ -97,8 +108,18 @@
   .left img {
     max-width: 300px;
   }
+
+  .box {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .box ul {
+    margin-bottom: 1rem;
+  }
 }
 
+/* Mobile (<=768px) */
 @media (max-width: 768px) {
   .container,
   .containerReverse {
@@ -106,7 +127,7 @@
   }
 
   .right h2 {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
   }
 
   .right p {
@@ -120,5 +141,7 @@
   .ctaButton {
     font-size: 0.9rem;
     padding: 10px 16px;
+    width: 100%;
+    max-width: 250px;
   }
 }

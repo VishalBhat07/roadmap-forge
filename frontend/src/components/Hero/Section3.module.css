@@ -2,11 +2,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   padding: 4rem 8%;
   min-height: 80vh;
   color: var(--secondary);
   background-color: var(--tertiary);
-  gap: 20px;
+  gap: 40px;
 }
 
 .left {
@@ -31,11 +32,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .box ul {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .box ul li {
@@ -61,20 +65,25 @@
   transform: scale(1.05);
 }
 
-.right img {
+.right {
   flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.right img {
   width: 100%;
-  max-width: 550px;
+  max-width: 500px;
+  height: auto;
   border-radius: 10px;
 }
 
-/* Responsive Design */
+/* ✅ Tablets & Below */
 @media (max-width: 1024px) {
-  .container,
-  .containerReverse {
+  .container {
     flex-direction: column;
-    text-align: center;
     padding: 3rem 5%;
+    text-align: center;
   }
 
   .left {
@@ -90,14 +99,19 @@
     font-size: 1.1rem;
   }
 
+  .box {
+    flex-direction: column;
+    align-items: center;
+  }
+
   .right img {
-    max-width: 300px;
+    max-width: 350px;
   }
 }
 
+/* ✅ Mobile Devices */
 @media (max-width: 768px) {
-  .container,
-  .containerReverse {
+  .container {
     padding: 2rem 5%;
   }
 
@@ -116,5 +130,9 @@
   .ctaButton {
     font-size: 0.9rem;
     padding: 10px 16px;
+  }
+
+  .right img {
+    max-width: 280px;
   }
 }

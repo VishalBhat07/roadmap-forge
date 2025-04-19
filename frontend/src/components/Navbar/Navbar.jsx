@@ -38,13 +38,15 @@ const Navbar = () => {
     <>
       {isMobile ? (
         !sidebarOpen && (
-          <button
-            className={styles.hamburger}
-            onClick={() => setSidebarOpen(!sidebarOpen)}
-            style={{ color: "black" }}
-          >
-            ☰
-          </button>
+          <div className={styles.hamburgerWrapper}>
+            <button
+              className={styles.hamburger}
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+              style={{ color: "black" }}
+            >
+              ☰
+            </button>
+          </div>
         )
       ) : (
         <nav className={`${styles.nav} ${scrolled ? styles.scrolled : ""}`}>

@@ -122,15 +122,20 @@
   background-color: var(--quat);
 }
 
+.hamburgerWrapper {
+  height: 30px;
+}
+
 .hamburger {
   font-size: 28px;
   background: none;
   border: none;
   cursor: pointer;
   color: var(--tertiary);
-  padding: 16px;
-  position: fixed;
-  z-index: 1001;
+  padding: 16px; /* Increased padding for larger click area */
+  position: fixed; /* Fixed to top */
+  top: 0;
+  left: 0;
 }
 
 .hamburger:hover {
