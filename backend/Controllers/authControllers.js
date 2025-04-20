@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
 const userModel = require("../Models/userModel");
+const sendEmail = require("../utils/mailSender.js");
 
 const registerController = async (req, res) => {
   try {
@@ -94,7 +95,6 @@ const generateVerificationCode = async (req, res) => {
 
     const verificationCode = crypto.randomInt(100000, 999999).toString();
     const expiryTimeInMinutes = 2;
-    // console.log(verificationCode);
 
     const salt = await bcrypt.genSalt(10);
     const hashedCode = await bcrypt.hash(verificationCode, salt);

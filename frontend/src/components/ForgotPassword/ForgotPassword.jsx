@@ -25,7 +25,9 @@ const ForgotPassword = () => {
       const res = await Axios.post(backendUrl + "/auth/verificationcode", {
         userEmail,
       });
+      console.log(res.data);
       if (res.data.user) {
+        // console.log(res.data);
         toast.success("Verification code has been sent");
         setShowTimer(true);
         setShowOtpInput(true);
