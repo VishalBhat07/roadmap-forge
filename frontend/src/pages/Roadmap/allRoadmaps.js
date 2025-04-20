@@ -5,7 +5,7 @@ import dsaRoadmap from "../../assets/Roadmaps/dsaRoadmap";
 import mlRoadmap from "../../assets/Roadmaps/mlRoadmap";
 import mobileappdevelopmentreactnativeRoadmap from "../../assets/Roadmaps/mobileappdevelopmentreactnativeRoadmap";
 import cybersecurityRoadmap from "../../assets/Roadmaps/cybersecurityRoadmap";
-import blockchaindevelopmentRoadmap from "../../assets/Roadmaps/blockchainDevelopmentRoadmap";
+import blockchaindevelopmentRoadmap from "../../assets/Roadmaps/blockchaindevelopmentRoadmap";
 import gameDevelopmentRoadmap from "../../assets/Roadmaps/gameDevelopmentRoadmap";
 import devOpsCloudComputingRoadmap from "../../assets/Roadmaps/devOpsCloudComputingRoadmap";
 import artificialIntelligenceRoadmap from "../../assets/Roadmaps/artificialIntelligenceRoadmap";
