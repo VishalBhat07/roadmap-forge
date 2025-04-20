@@ -6,10 +6,10 @@ import mlRoadmap from "../../assets/Roadmaps/mlRoadmap";
 import mobileappdevelopmentreactnativeRoadmap from "../../assets/Roadmaps/mobileappdevelopmentreactnativeRoadmap";
 import cybersecurityRoadmap from "../../assets/Roadmaps/cybersecurityRoadmap";
 import blockchaindevelopmentRoadmap from "../../assets/Roadmaps/blockchaindevelopmentRoadmap";
-import gameDevelopmentRoadmap from "../../assets/Roadmaps/gameDevelopmentRoadmap";
-import devOpsCloudComputingRoadmap from "../../assets/Roadmaps/devOpsCloudComputingRoadmap";
-import artificialIntelligenceRoadmap from "../../assets/Roadmaps/artificialIntelligenceRoadmap";
-import cGameDevelopmentRoadmap from "../../assets/Roadmaps/cGameDevelopmentRoadmap";
+import gameDevelopmentRoadmap from "../../assets/Roadmaps/gamedevelopmentRoadmap";
+import devopscloudcomputingRoadmap from "../../assets/Roadmaps/devopscloudcomputingRoadmap";
+import artificialintelligenceRoadmap from "../../assets/Roadmaps/artificialintelligenceRoadmap";
+import cgamedevelopmentRoadmap from "../../assets/Roadmaps/cgamedevelopmentRoadmap";
 
 const allRoadmaps = {
   frontendwebdevelopment: {
@@ -39,7 +39,7 @@ const allRoadmaps = {
     title: "Blockchain Development",
   },
   devopscloudcomputing: {
-    roadmap: devOpsCloudComputingRoadmap,
+    roadmap: devopscloudcomputingRoadmap,
     title: "DevOps & Cloud Computing",
   },
   gamedevelopment: {
@@ -47,11 +47,11 @@ const allRoadmaps = {
     title: "Game Development",
   },
   artificialintelligence: {
-    roadmap: artificialIntelligenceRoadmap,
+    roadmap: artificialintelligenceRoadmap,
     title: "Artificial Intelligence",
   },
   cgamedevelopment: {
-    roadmap: cGameDevelopmentRoadmap,
+    roadmap: cgamedevelopmentRoadmap,
     title: "C++ Game Development",
   },
 };
