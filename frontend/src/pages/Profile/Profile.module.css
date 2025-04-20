@@ -293,55 +293,7 @@
   box-shadow: 0 4px 12px rgba(3, 4, 94, 0.2);
 }
 
-/* @media screen and (max-width: 1024px) {
-  .container {
-    padding: 1.5rem;
-  }
-
-  .profileCard {
-    flex-direction: column;
-    width: 95%;
-    min-height: auto;
-  }
-
-  .left,
-  .right {
-    width: 100%;
-    border-radius: var(--border-radius) var(--border-radius) 0 0;
-  }
-
-  .right {
-    padding-top: 1.5rem;
-  }
-
-  .userinfo p {
-    font-size: 0.95rem;
-  }
-
-  .username {
-    font-size: 1.15rem !important;
-  }
-
-  .coursesTitle {
-    font-size: 1.3rem;
-  }
-
-  .courseTitle {
-    font-size: 1rem;
-  }
-
-  .courseDate {
-    font-size: 0.8rem;
-  }
-
-  .editButton,
-  .signOutButton {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.75rem;
-  }
-}
-
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
   .container {
     padding: 1rem;
   }
@@ -349,11 +301,12 @@
   .left {
     align-items: center;
     padding: 1.5rem;
+    width: 60%;
   }
 
   .profilepic {
-    width: 140px;
-    height: 140px;
+    width: 100px;
+    height: 100px;
     margin-bottom: 1.5rem;
   }
 
@@ -380,44 +333,3 @@
     padding: 0.5rem 1rem;
   }
 }
-
-@media screen and (max-width: 480px) {
-  .profilepic {
-    width: 120px;
-    height: 120px;
-  }
-
-  .userinfo p {
-    font-size: 0.85rem;
-  }
-
-  .username {
-    font-size: 0.95rem !important;
-  }
-
-  .coursesTitle {
-    font-size: 1.1rem;
-  }
-
-  .courseTitle {
-    font-size: 0.95rem;
-  }
-
-  .courseDate {
-    font-size: 0.75rem;
-  }
-
-  .editButton,
-  .signOutButton {
-    font-size: 0.65rem;
-    padding: 0.4rem 0.9rem;
-  }
-
-  .buttonIcon {
-    margin-right: 4px;
-  }
-
-  .coursesList {
-    max-height: 250px;
-  }
-} */
