@@ -5,7 +5,7 @@ import dsaRoadmap from "../../assets/Roadmaps/dsaRoadmap";
 import mlRoadmap from "../../assets/Roadmaps/mlRoadmap";
 import mobileappdevelopmentreactnativeRoadmap from "../../assets/Roadmaps/mobileappdevelopmentreactnativeRoadmap";
 import cybersecurityRoadmap from "../../assets/Roadmaps/cybersecurityRoadmap";
-import blockchainDevelopmentRoadmap from "../../assets/Roadmaps/blockchainDevelopmentRoadmap";
+import blockchaindevelopmentRoadmap from "../../assets/Roadmaps/blockchainDevelopmentRoadmap";
 import gameDevelopmentRoadmap from "../../assets/Roadmaps/gameDevelopmentRoadmap";
 import devOpsCloudComputingRoadmap from "../../assets/Roadmaps/devOpsCloudComputingRoadmap";
 import artificialIntelligenceRoadmap from "../../assets/Roadmaps/artificialIntelligenceRoadmap";
@@ -35,7 +35,7 @@ const allRoadmaps = {
   },
   cybersecurity: { roadmap: cybersecurityRoadmap, title: "Cybersecurity" },
   blockchaindevelopment: {
-    roadmap: blockchainDevelopmentRoadmap,
+    roadmap: blockchaindevelopmentRoadmap,
     title: "Blockchain Development",
   },
   devopscloudcomputing: {
