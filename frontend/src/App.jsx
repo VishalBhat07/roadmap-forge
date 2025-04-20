@@ -1,6 +1,6 @@
 import "./App.css";
 import Footer from "./components/Footer/Footer";
-import Hero from "./components/Hero/hero";
+import Hero from "./components/Hero/Hero.jsx"
 import Navbar from "./components/Navbar/Navbar";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
