@@ -137,7 +137,7 @@ const Profile = () => {
               <FaBook className={styles.icon} /> Your roadmaps
             </div>
             <div className={styles.coursesList}>
-              {roadmaps.length > 0 ? (
+              {roadmaps?.length > 0 ? (
                 roadmaps.map((roadmap, index) => (
                   <motion.div
                     key={index}

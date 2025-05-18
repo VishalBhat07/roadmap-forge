@@ -4,7 +4,7 @@ const mongodbURL = process.env.MONGODBURL;
 const connectMongoDB = async () => {
   mongoose
     .connect(mongodbURL, {
-      dbName: "RoadMapForge",
+      dbName: "communityTest",
     })
     .then(() => {
       console.log("Connected to Mongo DB");

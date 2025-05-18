@@ -46,7 +46,7 @@ const registerController = async (req, res) => {
     return res.status(500).json({
       error: "Internal server error",
       details: error.message,
-    });
+    }); 
   }
 };
 

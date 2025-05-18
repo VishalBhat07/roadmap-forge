@@ -7,6 +7,7 @@ const userRouter = require("./Routers/userRouter.js");
 const roadmapRouter = require("./Routers/roadmapRouter.js");
 const cookieParser = require("cookie-parser");
 const geminiRouter = require("./Routers/geminiRouter.js");
+const postRouter = require("./Routers/postRouter.js");
 
 const port = process.env.PORT || 8080;
 
@@ -30,3 +31,4 @@ app.use("/auth", authRouter);
 app.use("/user", userRouter);
 app.use("/roadmap", roadmapRouter);
 app.use("/gemini", geminiRouter);
+app.use("/post", postRouter);

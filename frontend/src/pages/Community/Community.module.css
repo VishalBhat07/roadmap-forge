@@ -1,0 +1,106 @@
+/* Community.module.css */
+.communityWrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  background-color: var(--tertiary);
+  min-height: 100vh;
+}
+
+.communityHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--quat);
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.communityTitle {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.discordBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #5865f2; /* Discord brand color */
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(88, 101, 242, 0.3);
+}
+
+.discordBtn:hover {
+  background-color: #4752c4;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(88, 101, 242, 0.4);
+}
+
+.discordBtn:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(88, 101, 242, 0.3);
+}
+
+.addPostBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(3, 4, 94, 0.2);
+}
+
+.addPostBtn:hover {
+  background-color: #040583;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(3, 4, 94, 0.3);
+}
+
+.addPostBtn:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(3, 4, 94, 0.2);
+}
+
+@media (max-width: 768px) {
+  .communityHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .headerLeft {
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+  }
+
+  .addPostBtn {
+    width: 100%;
+    justify-content: center;
+  }
+}

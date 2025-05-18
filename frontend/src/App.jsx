@@ -1,13 +1,12 @@
 import "./App.css";
 import Footer from "./components/Footer/Footer";
-import Hero from "./components/Hero/Hero.jsx"
+import Hero from "./components/Hero/Hero.jsx";
 import Navbar from "./components/Navbar/Navbar";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import Signup from "./pages/Signin/Signup.jsx";
 import Roadmaps from "./pages/Roadmaps/Roadmaps.jsx";
 import Roadmap from "./pages/Roadmap/Roadmap.jsx";
-import WorkInProgressPage from "./pages/WorkInProgressPage/WorkInProgressPage/WorkInProgressPage.jsx";
 import Login from "./pages/Login/Login.jsx";
 import Profile from "./pages/Profile/Profile.jsx";
 import AuthContext from "./context/authContext.js";
@@ -15,6 +14,7 @@ import { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import Topic from "./pages/Topic/Topic.jsx";
 import ForgotPassword from "./components/ForgotPassword/ForgotPassword.jsx";
+import Community from "./pages/Community/Community.jsx";
 
 function AppContent() {
   const paths = ["/login", "/signup", "/forgotpassword"];
@@ -31,7 +31,7 @@ function AppContent() {
         <Route path="/roadmaps" element={<Roadmaps />} />
         <Route path="/roadmaps/:id" element={<Roadmap />} />
         <Route path="/roadmaps/:roadmap/:topicid" element={<Topic />} />
-        <Route path="/community" element={<WorkInProgressPage />} />
+        <Route path="/community" element={<Community />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
         <Route path="*" element={<NotFoundPage />} />

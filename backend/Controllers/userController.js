@@ -52,6 +52,7 @@ const uploadPicController = async (req, res) => {
 const getPfpController = async (req, res) => {
   try {
     const user = await imageModel.findOne({ username: req.params.username });
+    // console.log(req.params.username);
     if (!user || !user.image) {
       return res.status(404).send("Image not found");
     }
