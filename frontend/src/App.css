@@ -1,23 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&display=swap");
-
 :root {
-  --primary: #03045e;
-  --secondary: #283618;
-  --tertiary: #f2f2f2;
-  --quat: #dda15e;
-  --pent: #bc6c25;
-
-
-  --testPrimary: #000;
-  --testSecondary: #fff;
+  --primary: #121212; /* Rich black for primary elements */
+  --secondary: #2a2a2a; /* Softer black for secondary elements */
+  --tertiary: #fafafa; /* Crisp off-white for backgrounds */
+  --quat: #e0e0e0; /* Silver gray for borders/dividers */
+  --pent: #757575; /* Medium gray for subtle accents */
+  --testPrimary: #000; /* Pure black */
+  --testSecondary: #fff; /* Pure white */
 }
-
 * {
   margin: 0;
   padding: 0;
   font-family: "Baloo Bhaijaan 2", "Times New Roman", Times, serif;
 }
-
-.app-container{
-  background-color: #f2f2f2;
+.app-container {
+  background-color: #fafafa;
 }

@@ -1,147 +1,160 @@
-.container,
-.containerReverse {
+.container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 4rem 8%;
-  min-height: 80vh;
-  color: var(--tertiary);
-  background-color: var(--primary);
-  gap: 2rem;
+  justify-content: center;
+  padding: 5rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 4rem;
+  background-color: var(--tertiary);
   flex-wrap: wrap;
 }
 
-.containerReverse {
-  flex-direction: row-reverse;
-}
-
-.left {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-
-.left img {
-  width: 100%;
-  max-width: 400px;
-  border-radius: 10px;
-}
-
+.left,
 .right {
-  flex: 1;
-  max-width: 60%;
-  padding-left: 40px;
+  flex: 1 1 450px;
 }
 
-.right h2 {
-  font-size: 2.2rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
+.imageWrapper {
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
 }
 
-.right p {
-  font-size: 1.2rem;
-  line-height: 1.6;
+.imageWrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.imageWrapper:hover {
+  transform: translateY(-5px);
+}
+
+.heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  line-height: 1.3;
+}
+
+.highlightText {
+  position: relative;
+  z-index: 1;
+}
+
+.highlightText::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  height: 10px;
+  width: 100%;
+  background-color: var(--quat);
+  z-index: -1;
+  opacity: 0.5;
+}
+
+.description {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--pent);
+  margin-bottom: 2rem;
+}
+
+.featuresContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--testSecondary);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.featuresList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
   margin-bottom: 1.5rem;
 }
 
-.box {
+.featureItem {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0.8rem;
+  font-size: 1rem;
+  color: var(--secondary);
+  padding: 0.6rem 0;
 }
 
-.box ul {
-  list-style: none;
-  padding: 0;
-  flex: 1;
+.featureItem svg {
+  color: var(--primary);
+  min-width: 20px;
 }
 
-.box ul li {
-  margin: 1.5% 0;
-  font-size: 1.1rem;
+.ctaContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
 }
 
 .ctaButton {
-  padding: 12px 20px;
-  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1rem 2.2rem;
+  background-color: var(--primary);
+  color: var(--testSecondary);
   border: none;
   border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  background-color: var(--tertiary);
-  color: var(--secondary);
-  border: 2px solid var(--tertiary);
-  flex-shrink: 0;
 }
 
 .ctaButton:hover {
-  color: var(--primary);
-  background-color: var(--quat);
-  transform: scale(1.05);
+  background-color: var(--secondary);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Tablet (<=1024px) */
-@media (max-width: 1024px) {
-  .container,
-  .containerReverse {
-    flex-direction: column;
-    text-align: center;
-    padding: 3rem 5%;
-  }
-
-  .right {
-    max-width: 100%;
-    padding-left: 0;
-  }
-
-  .right h2 {
+/* Media Queries */
+@media (max-width: 768px) {
+  .heading {
     font-size: 2rem;
   }
 
-  .right p {
-    font-size: 1.1rem;
-  }
-
-  .left img {
-    max-width: 300px;
-  }
-
-  .box {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .box ul {
-    margin-bottom: 1rem;
-  }
-}
-
-/* Mobile (<=768px) */
-@media (max-width: 768px) {
-  .container,
-  .containerReverse {
-    padding: 2rem 5%;
-  }
-
-  .right h2 {
-    font-size: 1.7rem;
-  }
-
-  .right p {
-    font-size: 1rem;
-  }
-
-  .box ul li {
+  .description {
     font-size: 1rem;
   }
 
   .ctaButton {
-    font-size: 0.9rem;
-    padding: 10px 16px;
-    width: 100%;
-    max-width: 250px;
+    padding: 0.9rem 1.8rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heading {
+    font-size: 1.7rem;
+  }
+
+  .description {
+    font-size: 0.95rem;
+  }
+
+  .featuresList {
+    grid-template-columns: 1fr;
+  }
+
+  .ctaContainer {
+    justify-content: center;
   }
 }
