@@ -3,6 +3,7 @@ import styles from "./Navbar.module.css";
 import { Link } from "react-router-dom";
 import AuthContext from "../../context/authContext";
 import { toast } from "react-toastify";
+import Axios from "axios";
 
 const Navbar = () => {
   const { loginState, setLoginState } = useContext(AuthContext);
@@ -10,6 +11,8 @@ const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [image, setImage] = useState("/placeholder.png");
+  const backendUrl = import.meta.env.VITE_BACKENDURL;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,6 +29,31 @@ const Navbar = () => {
     console.log(window.innerWidth);
     console.log(isMobile);
     return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    console.log("inside useffect");
+    const fetchUserPfp = async () => {
+      try {
+        const currentUser = JSON.parse(localStorage.getItem("loginState"));
+        const pfp = await Axios.get(
+          backendUrl + `/user/images/${currentUser.user.username}`,
+          {
+            responseType: "arraybuffer",
+          }
+        );
+        const base64String = btoa(
+          new Uint8Array(pfp.data).reduce(
+            (data, byte) => data + String.fromCharCode(byte),
+            ""
+          )
+        );
+        setImage(`data:image/jpeg;base64,${base64String}`);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchUserPfp();
   }, []);
 
   const handleSignOut = () => {
@@ -89,8 +117,8 @@ const Navbar = () => {
                         JSON.parse(localStorage.getItem("loginState")).user
                           .username
                       }
-                    </p>{" "}
-                    <i className="fa-solid fa-user"></i>
+                    </p>
+                    <img src={image} className={styles.profileImage} />
                   </button>
                 </div>
                 {dropdownOpen && (

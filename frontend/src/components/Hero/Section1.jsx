@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Section1.module.css";
-import heroimg from "../../assets/hero-img.png";
+import heroimg from "/hero-img.png";
 import { useNavigate } from "react-router-dom";
 import { Compass, UserPlus } from "lucide-react";
 import { toast } from "react-toastify";

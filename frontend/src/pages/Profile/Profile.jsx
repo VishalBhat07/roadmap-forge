@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import AuthContext from "../../context/authContext";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
 import styles from "./Profile.module.css";
-import placeholder from "../../assets/hero-img.png";
+import placeholder from "/hero-img.png";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import EditProfile from "../../components/EditProfile/EditProfile";

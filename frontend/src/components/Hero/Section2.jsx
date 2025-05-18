@@ -1,9 +1,11 @@
 import React from "react";
 import styles from "./Section2.module.css";
-import heroimg from "../../assets/cpp.png";
+import heroimg from "/cpp.png";
 import { Code, Terminal, Users, Lightbulb, ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Section2 = () => {
+  const navigate = useNavigate();
   return (
     <div className={styles.container}>
       <div className={styles.left}>
@@ -41,7 +43,10 @@ const Section2 = () => {
             </div>
           </div>
           <div className={styles.ctaContainer}>
-            <button className={styles.ctaButton}>
+            <button
+              className={styles.ctaButton}
+              onClick={() => navigate("/roadmaps")}
+            >
               <span>Start Learning C++</span>
               <ArrowRight size={18} />
             </button>
