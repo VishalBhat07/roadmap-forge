@@ -6,11 +6,11 @@ import handleTopicCompleted from "../../util/handleTopicCompleted.js";
 import fetchTopicCompletionStatus from "../../util/fetchTopicCompletionStatus.js";
 import { toast } from "react-toastify";
 import fetchTopicContent from "../../util/fetchTopicContent.js";
-import MarkdownRenderer from "../../components/MarkdownRenderer/MarkdownRenderer.jsx";
+import RenderStructuredContent from "../../components/RenderStructuredContent/RenderStructuredContent.jsx";
 
 const Topic = () => {
   const { roadmap, topicid } = useParams();
-  const [topicContent, setTopicContent] = useState("## Loading...");
+  const [topicContent, setTopicContent] = useState(null);
   const [isLoading, setIsLoading] = useState(true); // Controls spinner visibility
   const currentUser = JSON.parse(localStorage.getItem("loginState"));
   const [completed, setCompleted] = useState(false);
@@ -37,7 +37,7 @@ const Topic = () => {
     // Ensure spinner stays visible for at least 5 seconds
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
+    }, 7000);
 
     return () => clearTimeout(timer); // Cleanup timeout on unmount
   }, [roadmap, topicid]);
@@ -84,7 +84,7 @@ const Topic = () => {
           </div> // Spinner here
         ) : (
           <div className={styles.content}>
-            <MarkdownRenderer content={topicContent} />
+            {topicContent && <RenderStructuredContent content={topicContent} />}
           </div>
         )}
       </div>

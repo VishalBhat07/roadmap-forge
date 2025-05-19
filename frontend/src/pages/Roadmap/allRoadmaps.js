@@ -29,7 +29,7 @@ const allRoadmaps = {
     title: "Data Structures & Algorithms",
   },
   machinelearning: { roadmap: mlRoadmap, title: "Machine Learning" },
-  mobileappdevelopmentreactnativeRoadmap: {
+  mobileappdevelopmentreactnative: {
     roadmap: mobileappdevelopmentreactnativeRoadmap,
     title: "Mobile App Development (React Native)",
   },

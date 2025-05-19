@@ -7,8 +7,8 @@ const fetchTopicContent = async (roadmapTitle, topicid, setTopicContent) => {
     const res = await Axios.get(
       backendUrl + `/gemini/response/${roadmapTitle}/${topicid}`
     );
-    setTopicContent(res.data.topicContentMD);
-    console.log(res.data.topicContentMD);
+    setTopicContent(res.data.topicContentJSON);
+    console.log(res.data.topicContentJSON);
   } catch (err) {
     console.log(err);
   }

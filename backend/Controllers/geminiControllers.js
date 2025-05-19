@@ -15,6 +15,7 @@ const geminiController = async (req, res) => {
       console.log("Serving cached content from MongoDB...");
       return res.json({
         topicContentMD: existingContent.content,
+        topicContentJSON: existingContent.contentJSON,
         message: "Cached response served",
       });
     }
@@ -22,19 +23,22 @@ const geminiController = async (req, res) => {
     const genAI = new GoogleGenerativeAI(API_KEY);
     const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
-    const prompt = `I am creating a ${roadmap} roadmap. Provide content for the topic: ${title} under this roadmap. 
+    const prompt = `You are helping build a learning roadmap for the topic: "${title}" under the "${roadmap}" roadmap.
 
-    Structure the response as a **JSON array** that can be parsed with json2md.  
-    Example JSON format:  
-    [
-      { "h2": "Topic Title" },
-      { "p": "Brief description of the topic." },
-      { "ul": ["Prerequisite 1", "Prerequisite 2"] },
-      { "code": { "language": "javascript", "content": "console.log('Hello');" } },
-      { "p": "Resources for further reading: " },
-      { "ul": ["[Resource 1](https://example.com)", "[Resource 2](https://example.com)"] }
-    ]  
-    **Ensure the output is valid JSON and does not contain backticks (\`\`\`).**`;
+Generate a structured JSON array suitable for rendering educational content using custom React components.
+
+Follow this schema:
+[
+  { "h2": "Topic title" },
+  { "p": "Introduction or key points" },
+  { "ul": ["Key concept 1", "Key concept 2"] },
+  { "code": { "language": "javascript", "content": "console.log('Hello');" } },
+  { "p": "Further reading:" },
+  { "ul": ["[MDN - Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)", "[JSInfo - Loops](https://javascript.info/while-for)"] }
+]
+
+⚠️ Output only the valid JSON array (no backticks or markdown), do not include explanations or extra text.
+`;
 
     const result = await model.generateContent(prompt);
     let topicContent =
@@ -58,12 +62,14 @@ const geminiController = async (req, res) => {
         roadmap,
         title,
         content: markdownContent,
+        contentJSON: jsonData,
       });
 
       console.log("New content cached in MongoDB...");
 
       res.json({
         topicContentMD: markdownContent,
+        topicContentJSON: jsonData,
         message: "Response received successfully",
       });
     } catch (jsonError) {
