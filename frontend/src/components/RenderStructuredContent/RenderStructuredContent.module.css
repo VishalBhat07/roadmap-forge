@@ -1,0 +1,57 @@
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  font-family: "Segoe UI", sans-serif;
+  color: #1f2937; /* slate-800 */
+  line-height: 1.7;
+}
+
+.heading {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: #2563eb; /* blue-600 */
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.paragraph {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.list {
+  margin-bottom: 1rem;
+  padding-left: 1.25rem;
+  list-style-type: disc;
+}
+
+.listItem {
+  margin-bottom: 0.5rem;
+}
+
+.codeBlock {
+  background-color: #2d2d2d;
+  color: #f8f8f2;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.imageContainer {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.image {
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.imageCaption {
+  font-size: 0.9rem;
+  color: #6b7280; /* gray-500 */
+  margin-top: 0.5rem;
+}

@@ -1,16 +1,15 @@
 import Axios from "axios";
 
-const fetchTopicContent = async (roadmapTitle, topicid, setTopicContent) => {
+const fetchTopicContent = async (roadmapTitle, topicid) => {
   const backendUrl = import.meta.env.VITE_BACKENDURL;
   try {
-    console.log(roadmapTitle, topicid);
     const res = await Axios.get(
-      backendUrl + `/gemini/response/${roadmapTitle}/${topicid}`
+      `${backendUrl}/gemini/response/${roadmapTitle}/${topicid}`
     );
-    setTopicContent(res.data.topicContentJSON);
-    console.log(res.data.topicContentJSON);
+    return res.data.topicContentJSON; // ✅ Return content instead of setting it here
   } catch (err) {
-    console.log(err);
+    console.error("Error fetching topic content:", err);
+    return null;
   }
 };
 

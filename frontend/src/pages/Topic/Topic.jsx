@@ -5,18 +5,18 @@ import allRoadmaps from "../Roadmap/allRoadmaps";
 import handleTopicCompleted from "../../util/handleTopicCompleted.js";
 import fetchTopicCompletionStatus from "../../util/fetchTopicCompletionStatus.js";
 import { toast } from "react-toastify";
-import fetchTopicContent from "../../util/fetchTopicContent.js";
+import fetchTopicContent from "../../util/fetchTopicContent.js"; // ✅ make sure this returns a Promise
 import RenderStructuredContent from "../../components/RenderStructuredContent/RenderStructuredContent.jsx";
 
 const Topic = () => {
   const { roadmap, topicid } = useParams();
   const [topicContent, setTopicContent] = useState(null);
-  const [isLoading, setIsLoading] = useState(true); // Controls spinner visibility
+  const [isLoading, setIsLoading] = useState(true);
   const currentUser = JSON.parse(localStorage.getItem("loginState"));
   const [completed, setCompleted] = useState(false);
   const navigate = useNavigate();
 
-  // Fetch topic completion status
+  // ✅ Fetch completion status
   useEffect(() => {
     if (currentUser) {
       fetchTopicCompletionStatus(
@@ -28,18 +28,32 @@ const Topic = () => {
     }
   }, [roadmap, topicid, currentUser]);
 
-  // Fetch topic content and show spinner for at least 5 seconds
+  // ✅ Proper loader & fetch sync
   useEffect(() => {
-    setIsLoading(true); // Show spinner immediately
+    const loadContent = async () => {
+      setIsLoading(true);
+      const start = Date.now();
 
-    fetchTopicContent(allRoadmaps[roadmap]?.title, topicid, setTopicContent);
+      try {
+        const content = await fetchTopicContent(
+          allRoadmaps[roadmap]?.title,
+          topicid
+        );
+        setTopicContent(content);
+      } catch (error) {
+        console.error("Error fetching topic content:", error);
+        toast.error("Failed to load content");
+      } finally {
+        const duration = Date.now() - start;
+        const remainingTime = 2000 - duration;
+        setTimeout(
+          () => setIsLoading(false),
+          remainingTime > 0 ? remainingTime : 0
+        );
+      }
+    };
 
-    // Ensure spinner stays visible for at least 5 seconds
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 7000);
-
-    return () => clearTimeout(timer); // Cleanup timeout on unmount
+    loadContent();
   }, [roadmap, topicid]);
 
   const getRoadmap = (roadmap) => {
@@ -52,7 +66,6 @@ const Topic = () => {
   const getNextSection = () => {
     const allTopics = getRoadmap(roadmap);
     const indexOfTopic = allTopics.indexOf(topicid);
-
     if (indexOfTopic !== -1 && indexOfTopic + 1 < allTopics.length) {
       navigate(
         `/roadmaps/${roadmap}/${allTopics[indexOfTopic + 1].replace("/", "-")}`
@@ -65,7 +78,6 @@ const Topic = () => {
   const getPrevSection = () => {
     const allTopics = getRoadmap(roadmap);
     const prevIndex = allTopics.indexOf(topicid) - 1;
-
     if (prevIndex >= 0) {
       navigate(`/roadmaps/${roadmap}/${allTopics[prevIndex]}`);
     } else {
@@ -81,7 +93,7 @@ const Topic = () => {
         {isLoading ? (
           <div className={styles.spinner}>
             Hold on, while we find the best content for you...
-          </div> // Spinner here
+          </div>
         ) : (
           <div className={styles.content}>
             {topicContent && <RenderStructuredContent content={topicContent} />}
