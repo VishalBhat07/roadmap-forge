@@ -247,7 +247,7 @@
 
 .button {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   margin-top: 1.5rem;
 }
 
@@ -270,14 +270,16 @@
 }
 
 .editButton {
-  background-color: var(--quat);
-  color: white;
+  background-color: var(--primary);
+  color: var(--quat);
 }
 
 .editButton:hover {
-  background-color: var(--pent);
+  background-color: var(--quat);
+  color: var(--primary);
   transform: translateY(-3px);
   box-shadow: 0 4px 12px rgba(221, 161, 94, 0.4);
+  border: 2px solid black;
 }
 
 .signOutButton {

@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Footer.module.css";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+
+  const handleSignupRedirect = (e) => {
+    e.preventDefault();
+    navigate(`/signup?email=${encodeURIComponent(email)}`);
+    setEmail("");
+  };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.clippedBackground}></div>
@@ -74,9 +84,16 @@ const Footer = () => {
           </div>
           <div className={styles.emailInput}>
             <h3 className={styles.columnheaders}>Remain Updated</h3>
-            <form>
-              <input type="text" placeholder="Your email address" />
-              <button className={styles.signUp}>Sign up</button>
+            <form onSubmit={handleSignupRedirect}>
+              <input
+                type="text"
+                placeholder="Your email address"
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+              />
+              <button className={styles.signUp} type="submit">
+                Sign up
+              </button>
             </form>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import styles from "./Signup.module.css";
 import createUser from "../../auth/signup";
 import { toast } from "react-toastify";
@@ -8,14 +8,18 @@ import NotFoundPage from "../NotFoundPage/NotFoundPage";
 
 const Signup = () => {
   const navigate = useNavigate();
+  const { search } = useLocation();
+  const queryParams = new URLSearchParams(search);
+  const defaultEmail = queryParams.get("email") || "";
   const { loginState, setLoginState } = useContext(AuthContext);
   const currentUser = JSON.parse(localStorage.getItem("loginState"));
   const [userData, setUserData] = useState({
     username: "",
-    email: "",
+    email: defaultEmail,
     password: "",
   });
 
+  console.log(location);
   const handleChange = (e) => {
     setUserData({
       ...userData,

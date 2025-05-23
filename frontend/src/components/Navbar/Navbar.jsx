@@ -36,19 +36,21 @@ const Navbar = () => {
     const fetchUserPfp = async () => {
       try {
         const currentUser = JSON.parse(localStorage.getItem("loginState"));
-        const pfp = await Axios.get(
-          backendUrl + `/user/images/${currentUser.user.username}`,
-          {
-            responseType: "arraybuffer",
-          }
-        );
-        const base64String = btoa(
-          new Uint8Array(pfp.data).reduce(
-            (data, byte) => data + String.fromCharCode(byte),
-            ""
-          )
-        );
-        setImage(`data:image/jpeg;base64,${base64String}`);
+        if (currentUser) {
+          const pfp = await Axios.get(
+            backendUrl + `/user/images/${currentUser.user.username}`,
+            {
+              responseType: "arraybuffer",
+            }
+          );
+          const base64String = btoa(
+            new Uint8Array(pfp.data).reduce(
+              (data, byte) => data + String.fromCharCode(byte),
+              ""
+            )
+          );
+          setImage(`data:image/jpeg;base64,${base64String}`);
+        }
       } catch (err) {
         console.log(err);
       }
