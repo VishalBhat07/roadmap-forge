@@ -1,10 +1,9 @@
 import React, { useContext, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, Navigate, useNavigate } from "react-router-dom";
 import styles from "./Signup.module.css";
 import createUser from "../../auth/signup";
 import { toast } from "react-toastify";
 import AuthContext from "../../context/authContext";
-import NotFoundPage from "../NotFoundPage/NotFoundPage";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -125,7 +124,7 @@ const Signup = () => {
       </div>
     </>
   ) : (
-    <NotFoundPage />
+    <Navigate to="/" />
   );
 };
 

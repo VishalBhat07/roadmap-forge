@@ -37,6 +37,13 @@ const registerController = async (req, res) => {
       });
     }
 
+    sendEmail(
+      email,
+      "Welcome to RoadMapForge!",
+      "You're all set to explore your roadmap journey!",
+      "welcome"
+    );
+
     return res.json({
       message: "User registered successfully",
       user: savedUser,
@@ -46,7 +53,7 @@ const registerController = async (req, res) => {
     return res.status(500).json({
       error: "Internal server error",
       details: error.message,
-    }); 
+    });
   }
 };
 
@@ -106,7 +113,7 @@ const generateVerificationCode = async (req, res) => {
     await user.save();
 
     const subject = "Your Password Reset Code";
-    sendEmail(userEmail, subject, verificationCode);
+    sendEmail(userEmail, subject, verificationCode, "otp");
 
     res.json({
       message: "Data recieved at backend",

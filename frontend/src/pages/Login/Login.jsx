@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import styles from "./Login.module.css";
 import login from "../../auth/login";
 import { toast } from "react-toastify";
@@ -12,6 +12,7 @@ const Login = () => {
     password: "",
   });
   const { loginState, setLoginState } = useContext(AuthContext);
+  const currentUser = JSON.parse(localStorage.getItem("loginState"));
 
   const handleChange = (e) => {
     setUserData({
@@ -44,7 +45,7 @@ const Login = () => {
     });
   };
 
-  return (
+  return !currentUser ? (
     <>
       <div className={styles.container}>
         <div
@@ -109,6 +110,8 @@ const Login = () => {
         </div>
       </div>
     </>
+  ) : (
+    <Navigate to="/" />
   );
 };
 

@@ -11,7 +11,10 @@ const userSchema = new mongoose.Schema({
     },
   ],
   forgotPasswordCode: { type: String, default: null },
-  forgotPasswordCodeExpires: { type: Date },
+  forgotPasswordCodeExpires: {
+    type: Date,
+    index: { unique: true, sparse: true }, // 👈 sparse index fix
+  },
 });
 
 module.exports = userSchema;
