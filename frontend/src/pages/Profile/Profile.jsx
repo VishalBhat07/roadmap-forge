@@ -69,7 +69,7 @@ const Profile = () => {
         })
         .catch((err) => console.log(err));
     }
-  }, [editProfile, currentUser]);
+  }, [editProfile, loginState]);
 
   const containerVariants = {
     hidden: { opacity: 0 },

@@ -6,40 +6,50 @@
 }
 
 .topic {
-  font-size: 24px;
-  font-weight: 600;
-  border-bottom: 2px solid var(--pent);
-  margin-bottom: 20px;
-  word-wrap: break-word;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  text-transform: capitalize;
+  padding: 1rem 0;
+  border-bottom: 3px solid var(--pent);
+  color: var(--primary);
+  word-break: break-word;
 }
 
-.content {
-  min-height: 50vh;
-  padding: 10px;
-  font-size: 16px;
-  line-height: 1.6;
-  max-width: 95%;
+.spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: 1.5rem;
+  color: var(--pent);
+  font-size: 1.1rem;
+  text-align: center;
 }
 
 .buttons {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 15px;
-  margin: 5% 10%;
+  gap: 1rem;
+  margin: 3rem 0 1rem;
 }
 
 .buttons button {
-  font-size: 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
   color: white;
   border: none;
-  padding: 8px 20px;
+  padding: 0.8rem 1.6rem;
+  border-radius: 12px;
+  cursor: pointer;
   display: flex;
   align-items: center;
-  cursor: pointer;
-  border-radius: 15px;
-  transition: all 0.3s ease;
+  gap: 0.5rem;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .navigate {
@@ -48,70 +58,74 @@
 
 .navigate:hover {
   transform: scale(1.05);
+  background-color: #333;
 }
 
 .completeButton {
   background-color: var(--pent);
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  transition: background-color 0.3s ease-in-out, transform 0.3s ease;
+}
+
+.completeButton:hover {
+  transform: scale(1.05);
 }
 
 .completed {
-  background-color: green;
-  transform: scale(1.1);
+  background-color: #16a34a !important;
+  transform: scale(1.05);
 }
 
-.spinner {
-  text-align: center;
-  font-size: 18px;
-  font-weight: bold;
-  color: var(--primary);
-  margin-top: 20px;
-  animation: fade 1s infinite alternate;
+.incomplete {
+  background-color: #6b7280;
 }
 
-@keyframes fade {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0.5;
-  }
+.fixedBackButton {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  background-color: #4b5563; /* Tailwind's gray-700 */
+  color: white;
+  padding: 0.75rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
-/* Responsive layout for tablets and mobile */
+.fixedBackButton:hover {
+  background-color: #374151; /* Tailwind's gray-800 */
+  transform: scale(1.05);
+}
+
+/* Responsive for tablets & mobile */
 @media (max-width: 768px) {
-  .container {
-    padding: 5% 6%;
-  }
-
   .topic {
-    font-size: 20px;
-    text-align: center;
-  }
-
-  .content {
-    font-size: 15px;
-    padding: 8px;
+    font-size: 1.5rem;
+    padding-bottom: 0.75rem;
   }
 
   .buttons {
     flex-direction: row;
-    margin: 20px 0;
-    gap: 10px;
+    justify-content: space-evenly;
+    margin: 2rem 0;
+    gap: 0.8rem;
   }
 
   .buttons button {
-    width: 25%;
-    justify-content: center;
-    padding: 10px 15px;
-    font-size: 13px;
+    width: auto;
+    font-size: 0.85rem;
+    padding: 0.6rem 1.2rem;
   }
-
-  .spinner {
-    font-size: 16px;
-    padding: 10px;
+  .fixedBackButton {
+    bottom: 20px;
+    left: 20px;
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
   }
 }

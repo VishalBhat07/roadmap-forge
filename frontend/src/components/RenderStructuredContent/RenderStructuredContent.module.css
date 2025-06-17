@@ -1,57 +1,319 @@
+/* RenderStructuredContent.module.css */
+
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&display=swap");
+
+:root {
+  --primary: #121212; /* Rich black for primary elements */
+  --secondary: #2a2a2a; /* Softer black for secondary elements */
+  --tertiary: #fafafa; /* Crisp off-white for backgrounds */
+  --quat: #e0e0e0; /* Silver gray for borders/dividers */
+  --pent: #757575; /* Medium gray for subtle accents */
+  --testPrimary: #000; /* Pure black */
+  --testSecondary: #fff; /* Pure white */
+}
+
 .container {
-  max-width: 720px;
+  max-width: 800px;
   margin: 0 auto;
-  padding: 0 1.5rem;
-  font-family: "Segoe UI", sans-serif;
-  color: #1f2937; /* slate-800 */
+  padding: 2rem 1.5rem;
+  font-family: "Baloo Bhaijaan 2", "Times New Roman", Times, serif;
+  color: var(--primary);
   line-height: 1.7;
+  background: var(--tertiary);
+  min-height: 100vh;
+}
+
+/* Enhanced Typography */
+.headingWrapper {
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
 }
 
 .heading {
-  font-size: 1.75rem;
-  font-weight: bold;
-  color: #2563eb; /* blue-600 */
-  margin-top: 2rem;
-  margin-bottom: 1rem;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0;
+  letter-spacing: -0.025em;
+  font-family: "Baloo Bhaijaan 2", "Times New Roman", Times, serif;
 }
 
+.headingUnderline {
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--secondary), var(--pent));
+  border-radius: 2px;
+  margin-top: 0.75rem;
+}
+
+/* Enhanced Paragraphs */
 .paragraph {
-  margin-bottom: 1rem;
-  font-size: 1rem;
+  margin-bottom: 1.25rem;
+  font-size: 1.1rem;
+  color: var(--secondary);
+  text-align: justify;
+  hyphens: auto;
+}
+
+/* Enhanced Lists */
+.listWrapper {
+  margin: 1.5rem 0;
+  background: var(--testSecondary);
+  border-left: 4px solid var(--secondary);
+  border-radius: 0 8px 8px 0;
+  padding: 1rem 0;
+  box-shadow: 0 2px 8px rgba(18, 18, 18, 0.08);
 }
 
 .list {
-  margin-bottom: 1rem;
-  padding-left: 1.25rem;
-  list-style-type: disc;
+  margin: 0;
+  padding-left: 2rem;
+  list-style: none;
 }
 
 .listItem {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  color: var(--secondary);
+  position: relative;
+  padding-left: 0.5rem;
+}
+
+.listItem::before {
+  content: "▶";
+  color: var(--pent);
+  font-size: 0.8rem;
+  position: absolute;
+  left: -1rem;
+  top: 0.1rem;
+}
+
+.listItem:last-child {
+  margin-bottom: 0;
+}
+
+/* Enhanced Code Blocks */
+.codeWrapper {
+  margin: 2rem 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(18, 18, 18, 0.12);
+  border: 1px solid var(--quat);
+}
+
+.codeHeader {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--pent);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.codeLanguage {
+  color: var(--testSecondary);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: "Baloo Bhaijaan 2", monospace;
+}
+
+.codeHeader::after {
+  content: "";
+  display: flex;
+  gap: 6px;
+}
+
+.codeHeader::after {
+  content: "● ● ●";
+  color: var(--pent);
+  font-size: 1rem;
+  line-height: 1;
 }
 
 .codeBlock {
-  background-color: #2d2d2d;
-  color: #f8f8f2;
-  padding: 1rem;
-  border-radius: 6px;
+  background: var(--primary) !important;
+  color: var(--testSecondary);
+  padding: 1.5rem;
+  margin: 0;
   overflow-x: auto;
-  margin: 1.5rem 0;
+  font-size: 0.95rem;
+  font-family: "JetBrains Mono", "Fira Code", "SF Mono", "Monaco", "Inconsolata",
+    "Roboto Mono", monospace;
+  line-height: 1.6;
+  border: none;
+  border-radius: 0;
 }
 
+.codeBlock code {
+  background: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-size: inherit;
+}
+
+.codeBlock :global(.token.number) {
+  font-size: 0.95rem;
+}
+/* Scrollbar styling for code blocks */
+.codeBlock::-webkit-scrollbar {
+  height: 8px;
+}
+
+.codeBlock::-webkit-scrollbar-track {
+  background: var(--secondary);
+}
+
+.codeBlock::-webkit-scrollbar-thumb {
+  background: var(--pent);
+  border-radius: 4px;
+}
+
+.codeBlock::-webkit-scrollbar-thumb:hover {
+  background: var(--quat);
+}
+
+/* Enhanced Images */
 .imageContainer {
-  margin: 2rem 0;
+  margin: 2.5rem 0;
   text-align: center;
+}
+
+.imageWrapper {
+  display: inline-block;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(18, 18, 18, 0.15);
+  border: 1px solid var(--quat);
+  background: var(--testSecondary);
+  padding: 8px;
 }
 
 .image {
   max-width: 100%;
+  height: auto;
+  display: block;
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.image:hover {
+  transform: scale(1.02);
 }
 
 .imageCaption {
   font-size: 0.9rem;
-  color: #6b7280; /* gray-500 */
-  margin-top: 0.5rem;
+  color: var(--pent);
+  margin-top: 1rem;
+  font-style: italic;
+  padding: 0 1rem;
+}
+
+/* Enhanced Links */
+.link {
+  color: var(--secondary);
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.link:hover {
+  color: var(--primary);
+  border-bottom-color: var(--secondary);
+}
+
+.link:visited {
+  color: var(--pent);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem 1rem;
+  }
+
+  .heading {
+    font-size: 1.75rem;
+  }
+
+  .paragraph {
+    font-size: 1rem;
+    text-align: left;
+  }
+
+  .codeBlock {
+    font-size: 0.875rem;
+    padding: 1rem;
+  }
+
+  .listWrapper {
+    margin: 1rem 0;
+    padding: 0.75rem 0;
+  }
+
+  .list {
+    padding-left: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem 0.75rem;
+  }
+
+  .heading {
+    font-size: 1.5rem;
+  }
+
+  .headingWrapper {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .codeWrapper {
+    margin: 1.5rem -0.75rem;
+    border-radius: 0;
+  }
+
+  .codeBlock {
+    padding: 1rem 0.75rem;
+  }
+}
+
+/* Smooth scrolling and focus states */
+@media (prefers-reduced-motion: no-preference) {
+  .container {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Print styles */
+@media print {
+  .container {
+    max-width: none;
+    padding: 0;
+    background: white;
+  }
+
+  .codeHeader::after {
+    display: none;
+  }
+
+  .headingUnderline {
+    background: var(--primary);
+  }
+
+  .heading {
+    color: var(--testPrimary);
+  }
+
+  .paragraph {
+    color: var(--testPrimary);
+  }
+
+  .listItem {
+    color: var(--testPrimary);
+  }
 }

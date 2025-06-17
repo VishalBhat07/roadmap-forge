@@ -87,6 +87,14 @@ const Topic = () => {
 
   return (
     <div className={styles.container}>
+      {!isLoading && (
+        <button
+          onClick={() => navigate(`/roadmaps/${roadmap}`)}
+          className={styles.fixedBackButton}
+        >
+          <i className="fa-solid fa-arrow-left"></i> Back to Roadmap
+        </button>
+      )}
       <div className={styles.middle}>
         <div className={styles.topic}>{topicid}</div>
 

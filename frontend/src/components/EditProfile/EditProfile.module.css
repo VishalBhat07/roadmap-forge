@@ -3,17 +3,30 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: var(--pent);
-  color: var(--tertiary);
-  padding: 25px;
-  border-radius: 12px;
-  width: 420px;
+  background-color: var(--tertiary);
+  color: var(--primary);
+  padding: 2rem;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 480px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+  gap: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   z-index: 1000;
+  border: 2px solid var(--quat);
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -40%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
 }
 
 .header {
@@ -21,68 +34,107 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1.2rem;
-  font-weight: bold;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--quat);
+}
+
+.header p {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary);
 }
 
 .header i {
   cursor: pointer;
   font-size: 1.4rem;
-  transition: color 0.3s ease;
+  color: var(--pent);
+  transition: all 0.3s ease;
+  padding: 8px;
+  border-radius: 50%;
 }
 
 .header i:hover {
-  color: red;
+  color: var(--primary);
+  background-color: var(--quat);
+  transform: rotate(90deg);
 }
 
 .form form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 1.5rem;
   width: 100%;
 }
 
 .input {
-  padding: 10px;
-  border: 1px solid #444;
-  border-radius: 6px;
+  padding: 1rem;
+  border: 2px solid var(--quat);
+  border-radius: 8px;
   background: var(--tertiary);
-  color: var(--secondary);
+  color: var(--primary);
   cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
 }
 
 .input:hover {
   border-color: var(--primary);
+  background-color: var(--quat);
 }
 
 .submit {
-  background: var(--tertiary);
-  color: var(--secondary);
+  background: var(--primary);
+  color: var(--tertiary);
   border: none;
-  padding: 10px 15px;
-  border-radius: 6px;
+  padding: 1rem;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 1rem;
-  transition: all 0.5s ease;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .submit:hover {
   background: var(--secondary);
-  color: var(--tertiary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .preview {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  text-align: center;
+  gap: 1rem;
 }
 
 .preview img {
-  width: 250px;
-  max-height: 300px;
-  border-radius: 8px;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 12px;
   object-fit: cover;
-  border: 2px solid var(--tertiary);
+  border: 3px solid var(--quat);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.preview img:hover {
+  transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+  .editProfile {
+    width: 85%;
+    padding: 1.5rem;
+  }
+
+  .header p {
+    font-size: 1.2rem;
+  }
+
+  .submit {
+    padding: 0.8rem;
+  }
 }

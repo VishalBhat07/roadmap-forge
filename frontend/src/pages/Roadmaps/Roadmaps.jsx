@@ -1,49 +1,35 @@
 import React, { useState } from "react";
 import styles from "./Roadmaps.module.css";
-import roadmaps from "./roadmaps.js";
-import Card from "./Card.jsx";
+import roadmaps from "./roadmaps";
+import Card from "./Card";
 
 const Roadmaps = () => {
   const [search, setSearch] = useState("");
 
-  const searchQuery = search.toLowerCase();
-
-  const filteredSearch = roadmaps.filter((roadmap) => {
-    return roadmap.title.toLowerCase().startsWith(searchQuery);
-  });
+  const filtered = roadmaps.filter((roadmap) =>
+    roadmap.title.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
-    <>
-      <div className={styles.searchbar}>
-        <input
-          type="text"
-          name="search"
-          value={search}
-          className={styles.text}
-          onChange={(e) => {
-            console.log(search);
-            setSearch(e.target.value);
-          }}
-          placeholder="Search roadmaps..."
-        />
-      </div>
-      <div className={styles.container}>
-        {filteredSearch.length > 0 ? (
-          filteredSearch.map((roadmap) => (
-            <Card
-              id={roadmap.id}
-              key={roadmap.id}
-              title={roadmap.title}
-              description={roadmap.description}
-              difficulty={roadmap.difficulty}
-              duration={roadmap.duration}
-            />
-          ))
+    <div className={styles.wrapper}>
+      <h1 className={styles.pageTitle}>Explore Developer Roadmaps</h1>
+      <input
+        type="text"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        className={styles.searchInput}
+        placeholder="🔍 Search by title or skill..."
+        aria-label="Search roadmaps"
+      />
+
+      <div className={styles.grid}>
+        {filtered.length > 0 ? (
+          filtered.map((roadmap) => <Card key={roadmap.id} {...roadmap} />)
         ) : (
-          <p>No roadmaps found !!</p>
+          <div className={styles.noResults}>🚫 No roadmaps found!</div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 
