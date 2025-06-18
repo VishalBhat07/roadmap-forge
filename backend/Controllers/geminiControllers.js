@@ -6,10 +6,10 @@ const topicContentModel = require("../Models/topicContentModel");
 const API_KEY = process.env.GEMINI_API_KEY;
 
 const geminiController = async (req, res) => {
-  try {
-    const { roadmap, title } = req.params;
-    console.log("Roadmap:", roadmap, "Title:", title);
+  const { roadmap, title } = req.params;
+  console.log("Roadmap:", roadmap, "Title:", title);
 
+  try {
     let existingContent = await topicContentModel.findOne({ roadmap, title });
     if (existingContent) {
       console.log("Serving cached content from MongoDB...");
@@ -89,33 +89,41 @@ Use this exact schema for each section:
 Generate a roadmap that someone could use to become genuinely proficient in "${title}" within the context of "${roadmap}".
 `;
 
-    const result = await model.generateContent(prompt);
-    let topicContent =
-      result.response.candidates[0]?.content.parts[0]?.text || "{}";
+    // LLM interaction with retry logic
+    const generateContentWithRetry = async (retries = 1) => {
+      for (let attempt = 1; attempt <= retries + 1; attempt++) {
+        try {
+          const result = await model.generateContent(prompt);
+          let topicContent =
+            result.response.candidates[0]?.content.parts[0]?.text || "{}";
 
-    // Clean up the response more thoroughly
-    topicContent = topicContent
-      .replace(/```json|```/g, "")
-      .replace(/^[^[{]*/, "") // Remove any text before the JSON starts
-      .replace(/[^}\]]*$/, "") // Remove any text after the JSON ends
-      .trim();
+          // Clean unwanted wrapping and noise
+          topicContent = topicContent
+            .replace(/```json|```/g, "")
+            .replace(/^[^[{]*/, "") // Strip non-JSON prefix
+            .replace(/[^}\]]*$/, "") // Strip non-JSON suffix
+            .trim();
+
+          const jsonData = JSON.parse(topicContent);
+          return { jsonData, topicContent };
+        } catch (err) {
+          console.warn(`Attempt ${attempt} failed: ${err.message}`);
+          if (attempt === retries + 1) throw err;
+        }
+      }
+    };
 
     try {
-      // Parse JSON from AI response
-      const jsonData = JSON.parse(topicContent);
+      const { jsonData, topicContent } = await generateContentWithRetry(1);
 
-      // Validate jsonData is an array and has substantial content
       if (!Array.isArray(jsonData)) {
-        throw new Error("AI response is not an array.");
+        throw new Error("AI response is not a valid JSON array.");
       }
 
       if (jsonData.length < 10) {
-        console.warn(
-          "Response may be too brief. Consider regenerating for more detail."
-        );
+        console.warn("Response may be too brief. Consider regenerating.");
       }
 
-      // Convert JSON to Markdown
       const markdownContent = json2md(jsonData);
 
       await topicContentModel.create({
@@ -126,24 +134,22 @@ Generate a roadmap that someone could use to become genuinely proficient in "${t
       });
 
       console.log("New detailed content cached in MongoDB...");
-      res.json({
+      return res.json({
         topicContentMD: markdownContent,
         topicContentJSON: jsonData,
         message: "Detailed response received successfully",
         sections: jsonData.length,
       });
     } catch (jsonError) {
-      console.error("Error parsing JSON:", jsonError);
-      console.error("Raw response:", topicContent);
-      res.status(500).json({
+      console.error("Failed after retrying. JSON parsing error:", jsonError);
+      return res.status(500).json({
         message: "Invalid JSON format in AI response",
         error: jsonError.message,
-        rawResponse: topicContent.substring(0, 500) + "...", // First 500 chars for debugging
       });
     }
   } catch (error) {
     console.error("Error generating response:", error);
-    res.status(500).json({
+    return res.status(500).json({
       message: "Internal server error",
       error: error.message,
     });
